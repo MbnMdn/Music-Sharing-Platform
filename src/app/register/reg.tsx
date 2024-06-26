@@ -42,7 +42,6 @@ export default function Reg() {
                                         </div>
                                         <form className="mt-8 space-y-6" action="#" method="POST">
                                             <div className="rounded-md shadow-sm -space-y-px">
-
                                                 <div className="mt-4">
                                                     <button type="button"
                                                             className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-lg text-gray-900 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
