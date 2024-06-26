@@ -8,6 +8,11 @@ import {Image} from "@nextui-org/react";
 const songNarrow = {
     id: 1,
     edit: 0,
+    singer: 1,
+    view: 0,
+    time: 0,
+    like: 1,
+    singerName: 'Taylor Swift',
     name: 'Cruel Summer',
     plays: '111,340',
     duration: '3:48',
@@ -21,9 +26,8 @@ export default function SongNarrow() {
                 <div className="text-lg font-bold mr-6">{String(songNarrow.id).padStart(2, '0')}</div>
                 <Image
                     alt={songNarrow.name}
-                    className="w-12 h-12 object-cover rounded-md mr-6"
+                    className="w-12 h-12 rounded-md mr-6 "
                     height="100%"
-                    shadow="md"
                     src={MusicPic.src}
                     width="100%"
                 />
@@ -31,10 +35,15 @@ export default function SongNarrow() {
                     <div className="text-lg font-semibold">{songNarrow.name}</div>
                 </div>
                 <div className="flex items-center space-x-20">
-                    <span className="flex items-center gap-1">{songNarrow.plays}<EyeIcon/> </span>
-                    <span className="flex items-center gap-1">{songNarrow.duration}<ClockCircleLinearIcon/></span>
-                    <span className="flex items-center gap-1">{songNarrow.likes} <IoHeartOutline/></span>
-                    {songNarrow.edit === 0 && (<span className="flex items-center gap-1"> Edit <EditIcon /></span>)}
+                    {songNarrow.singer === 1 && (
+                        <span className="flex items-center gap-1">{songNarrow.singerName}</span>)}
+                    {songNarrow.view === 1 && (
+                        <span className="flex items-center gap-1">{songNarrow.plays}<EyeIcon/> </span>)}
+                    {songNarrow.time === 1 && (
+                        <span className="flex items-center gap-1">{songNarrow.duration}<ClockCircleLinearIcon/></span>)}
+                    {songNarrow.like === 1 && (
+                        <span className="flex items-center gap-1">{songNarrow.likes} <IoHeartOutline/></span>)}
+                    {songNarrow.edit === 1 && (<span className="flex items-center gap-1"> Edit <EditIcon/></span>)}
                 </div>
             </div>
         </div>

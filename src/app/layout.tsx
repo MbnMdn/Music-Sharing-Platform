@@ -1,10 +1,18 @@
 import type {Metadata} from "next";
-import {Inter} from "next/font/google";
+import {Bungee_Outline, Inter, Nunito} from "next/font/google";
 import "./globals.css";
 import {Providers} from "./providers";
+import { Londrina_Outline } from '@next/font/google';
+
 
 
 const inter = Inter({subsets: ["latin"]});
+const nunito = Nunito({subsets: ["latin"]});
+const bungee = Bungee_Outline({subsets: ["latin"],weight: '400',});
+const londrina = Londrina_Outline({
+    subsets: ['latin'], // Specify the subsets you want to include
+    weight: '400', // Specify the font weight if needed
+});
 
 export const metadata: Metadata = {
     title: "Create Next App",

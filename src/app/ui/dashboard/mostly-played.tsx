@@ -1,5 +1,7 @@
 import React from 'react';
 import MusicPic from './assets/music-pic.jpg'
+import {IoIosArrowForward} from "react-icons/io";
+import {Bungee_Outline} from "next/font/google";
 
 export default function MostlyPlayed() {
 
@@ -36,65 +38,24 @@ export default function MostlyPlayed() {
         },
     ];
 
+
     return (
-        <div className="bg-black text-white min-h-screen grid  items-center py-10">
+        <div className="text-white grid">
+            <h1 className="text-4xl font-bold mb-11">Mostly Played</h1>
             {bands.map((band) => (
                 // eslint-disable-next-line react/jsx-key
-                // <div className="grid grid-cols-3 gap-4">
-                //     <div key={band.id} className="flex items-center w-80 mb-6">
-                //         <div className="text-6xl font-bold mr-4">{band.id}</div>
-                //         <div className="flex items-center space-x-4">
-                //             <img src={MusicPic.src} alt={band.name} className="w-16 h-16 object-cover rounded"/>
-                //             <div>
-                //                 <div className="text-lg font-semibold">{band.name}</div>
-                //                 <div className="text-sm">{band.subscribers}</div>
-                //             </div>
-                //         </div>
-                //     </div>
-                // </div>
-                <div className="grid gap-4 grid-cols-[200px_auto_auto]">
-                    <div className=" text-6xl font-bold mr-4">{band.id}</div>
-                    <div className="">
+                <div className="grid  grid-cols-[10%_25%_50%_5%] gap-0 mb-1 ">
+                    <div className={"text-7xl font-bold mr-4 "}>{band.id}</div>
+                    <div className="items-center">
                         <img src={MusicPic.src} alt={band.name} className="w-16 h-16 object-cover rounded"/>
                     </div>
-                    <div className="">
+                    <div className="content-center">
                         <div className="text-lg font-semibold">{band.name}</div>
                         <div className="text-sm">{band.subscribers}</div>
-                    </div>
-
-
-
+                    </div >
+                    <div className="content-center"><IoIosArrowForward/></div>
                 </div>
-
             ))}
-
-
-            {/*<div className="flex mb-4">*/}
-            {/*    <div className="w-1/3 bg-gray-400 h-12">1</div>*/}
-            {/*    <div className="w-1/3 bg-gray-500 h-12">2</div>*/}
-            {/*    <div className="w-1/3 bg-gray-400 h-12">3</div>*/}
-            {/*</div>*/}
-
-
-
-            {/*<div className="grid grid-cols-3 gap-4">*/}
-            {/*    <div>01</div>*/}
-            {/*    <div>02</div>*/}
-            {/*    <div>03</div>*/}
-            {/*    <div>04</div>*/}
-            {/*    <div>05</div>*/}
-            {/*    <div>06</div>*/}
-            {/*    <div>07</div>*/}
-            {/*    <div>08</div>*/}
-            {/*    <div>09</div>*/}
-            {/*    <div>01</div>*/}
-            {/*    <div>02</div>*/}
-            {/*    <div>03</div>*/}
-            {/*    <div>04</div>*/}
-            {/*    <div>05</div>*/}
-            {/*    <div>06</div>*/}
-
-            {/*</div>*/}
         </div>
     );
 }
