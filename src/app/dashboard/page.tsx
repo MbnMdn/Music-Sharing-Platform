@@ -7,6 +7,7 @@ import Breadcrumbs from "@/app/ui/dashboard/breadcrumbs"
 // import {AcmeLogo} from "./AcmeLogo.jsx";
 import {Divider} from "@nextui-org/react";
 import SongNarrow from "@/app/ui/user/song-narrow";
+import SearchBar from "@/app/ui/dashboard/search-bar";
 
 
 export default function Page() {
@@ -15,7 +16,7 @@ export default function Page() {
         <div>
             <div className="flex space-x-20 justify-between">
                 <Breadcrumbs/>
-                {/*<SearchBar/>*/}
+                <SearchBar/>
             </div>
             <div className="flex-col space-y-16">
                 <SongCard/>

@@ -2,6 +2,9 @@ import NavLinks from '@/app/ui/dashboard/nav-links';
 import React from "react";
 import SearchBar from "@/app/ui/dashboard/search-bar";
 import GlassPlayer from "@/app/ui/dashboard/glass-player";
+import MusicPlayer from "@/app/ui/dashboard/music-player";
+import Play from "@/app/ui/dashboard/play";
+
 
 export default function SideNav() {
     return (

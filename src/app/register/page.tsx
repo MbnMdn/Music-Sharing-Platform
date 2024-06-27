@@ -18,7 +18,7 @@ export default function Page() {
                 <div className="w-1/2">
                     <Slider/>
                 </div>
-                <div className="w-1/2">
+                <div className="w-1/2 bg-gray-400 h-screen   content-center">
                     <Form/>
                 </div>
             </div>
