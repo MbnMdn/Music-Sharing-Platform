@@ -1,8 +1,4 @@
-// import React from 'react';
-// function Page() {
 
-// }
-//
 import React from "react";
 import Reg2 from "@/app/register/reg2";
 import Reg from "@/app/register/reg";
@@ -11,19 +7,16 @@ import Form from "@/app/register/form";
 // import {AcmeLogo} from "./AcmeLogo.jsx";
 
 export default function Page() {
-
     return (
-        <div data-theme="cupcake">
-            <div className="flex h-screen bg-neutral-100 items-center justify-center content-center ">
-                <div className="w-1/2">
+        <div data-theme="light">
+            <div className="flex h-screen w-screen items-center justify-center content-center ">
+                <div className="w-2/3">
                     <Slider/>
                 </div>
-                <div className="w-1/2 bg-gray-400 h-screen   content-center">
+                <div className="flex w-1/3 align-middle justify-around content-center">
                     <Form/>
                 </div>
             </div>
         </div>
-
     );
-
 }

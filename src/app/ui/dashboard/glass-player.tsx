@@ -1,4 +1,4 @@
-import {Button, Image, Slider} from "@nextui-org/react";
+import {Button, Image} from "@nextui-org/react";
 import MusicPic from "@/app/ui/dashboard/assets/music-pic.jpg";
 import {HeartIcon} from "@/app/ui/dashboard/MusicPlayer/HeartIcon";
 import {RepeatOneIcon} from "@/app/ui/dashboard/MusicPlayer/RepeatOneIcon";
@@ -6,6 +6,12 @@ import {PreviousIcon} from "@/app/ui/dashboard/MusicPlayer/PreviousIcon";
 import {PauseCircleIcon} from "@/app/ui/dashboard/MusicPlayer/PauseCircleIcon";
 import {NextIcon} from "@/app/ui/dashboard/MusicPlayer/NextIcon";
 import {ShuffleIcon} from "@/app/ui/dashboard/MusicPlayer/ShuffleIcon";
+
+
+import { cn } from "@/lib/utils"
+import { Slider } from "@/components/ui/slider"
+type SliderProps = React.ComponentProps<typeof Slider>
+
 import React from "react";
 
 export default function GlassPlayer() {
@@ -13,8 +19,8 @@ export default function GlassPlayer() {
 
     return (
         <div>
-
-            <div className="relative card w-52 max-h-96 glass hover:bg-base-100/5">
+            {/*<div className="relative border border-white/0 rounded-2xl bg-white/5 w-52 max-h-96 hover:bg-base-100/5">*/}
+            <div className="relative card w-full max-h-96 glass hover:bg-base-100/25">
                 <span
                     className="absolute bottom-[50%] right-[0%] h-44 w-44 bg-gradient-to-tl from-pink-500 via-purple-500 to-indigo-500 rounded-full shadow-lg blur-3xl"
                 ></span>
@@ -22,7 +28,7 @@ export default function GlassPlayer() {
                     <div className=" max-w-[80%] ">
                         <Image
                             alt="Album cover"
-                            className="object-cover items-center "
+                            className="object-cover items-center rounded-md "
                             height="100%"
                             shadow="md"
                             src={MusicPic.src}
@@ -53,16 +59,24 @@ export default function GlassPlayer() {
                             </div>
 
                             <div className="flex flex-col mt-3 gap-1">
+                                {/*<Slider*/}
+                                {/*    aria-label="Music progress"*/}
+                                {/*    classNames={{*/}
+                                {/*        track: "bg-default-500/30",*/}
+                                {/*        thumb: "w-2 h-2 after:w-2 after:h-2 after:bg-foreground",*/}
+                                {/*    }}*/}
+                                {/*    color="foreground"*/}
+                                {/*    defaultValue={33}*/}
+                                {/*    size="sm"*/}
+                                {/*/>*/}
+
                                 <Slider
-                                    aria-label="Music progress"
-                                    classNames={{
-                                        track: "bg-default-500/30",
-                                        thumb: "w-2 h-2 after:w-2 after:h-2 after:bg-foreground",
-                                    }}
-                                    color="foreground"
-                                    defaultValue={33}
-                                    size="sm"
+                                    defaultValue={[50]}
+                                    max={100}
+                                    step={1}
+                                    className={cn("w-[100%] h-0.5 slider")}
                                 />
+
                                 <div className="flex justify-between">
                                     <p className="text-small">1:23</p>
                                     <p className="text-small text-foreground/50">4:32</p>

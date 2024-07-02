@@ -3,6 +3,7 @@ import {Bungee_Outline, Inter, Nunito} from "next/font/google";
 import "./globals.css";
 import {Providers} from "./providers";
 import { Londrina_Outline } from '@next/font/google';
+import React from "react";
 
 
 
@@ -27,9 +28,7 @@ export default function RootLayout({
     return (
         <html lang="en" data-theme="dark">
         <body className={`bg-neutral-900 text-gray-100 ${inter.className}`}>
-        <Providers>
             {children}
-        </Providers>
         </body>
         </html>
     );

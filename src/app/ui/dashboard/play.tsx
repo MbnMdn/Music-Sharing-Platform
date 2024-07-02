@@ -15,7 +15,7 @@ export default function Play() {
     return (
         <Card
             isBlurred
-            className="border-none bg-background/20 dark:bg-default-100/50 m-3"
+            className="border-none bg-background/10 dark:bg-default-100/50 m-3"
             shadow="sm"
         >
             <div className="relative flex flex-col content-center items-center px-1 py-1 z-10 ">

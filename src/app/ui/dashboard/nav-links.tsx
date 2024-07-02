@@ -17,10 +17,10 @@ import clsx from 'clsx';
 
 const links = [
     {name: 'Home', href: '/dashboard', icon: FiHome},
-    {name: 'Profile', href: '/dashboard/invoices', icon: HiOutlineUser,},
-    {name: 'Favorites', href: '/dashboard/customers', icon: RiHeart3Line},
-    {name: 'Notifications', href: '/dashboard/customers', icon: TbNotification},
-    {name: 'Log Out', href: '/dashboard/customers', icon: TbLogout},
+    {name: 'Profile', href: '/user', icon: HiOutlineUser,},
+    // {name: 'Favorites', href: '/dashboard/customers', icon: RiHeart3Line},
+    // {name: 'Notifications', href: '/dashboard/customers', icon: TbNotification},
+    {name: 'Log Out', href: '/register', icon: TbLogout},
 ];
 
 export default function NavLinks() {

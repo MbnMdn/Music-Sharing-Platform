@@ -5,13 +5,14 @@ import {IoHeartOutline} from "react-icons/io5";
 import {Image} from "@nextui-org/react";
 
 
+
 const songNarrow = {
     id: 1,
-    edit: 0,
-    singer: 1,
-    view: 0,
-    time: 0,
-    like: 1,
+    // edit: 1,
+    // singer: 1,
+    // view: 1,
+    // time: 1,
+    // like: 1,
     singerName: 'Taylor Swift',
     name: 'Cruel Summer',
     plays: '111,340',
@@ -19,7 +20,7 @@ const songNarrow = {
     likes: '345',
     // image: {MusicPic},
 };
-export default function SongNarrow() {
+export default function SongNarrow({edit = 1, singer = 1, view = 1, time = 1, like = 1}) {
     return (
         <div className=" text-white flex  justify-between p-1">
             <div className="flex items-center w-full  p-4">
@@ -35,15 +36,15 @@ export default function SongNarrow() {
                     <div className="text-lg font-semibold">{songNarrow.name}</div>
                 </div>
                 <div className="flex items-center space-x-20">
-                    {songNarrow.singer === 1 && (
+                    {singer === 1 && (
                         <span className="flex items-center gap-1">{songNarrow.singerName}</span>)}
-                    {songNarrow.view === 1 && (
+                    {view === 1 && (
                         <span className="flex items-center gap-1">{songNarrow.plays}<EyeIcon/> </span>)}
-                    {songNarrow.time === 1 && (
+                    {time === 1 && (
                         <span className="flex items-center gap-1">{songNarrow.duration}<ClockCircleLinearIcon/></span>)}
-                    {songNarrow.like === 1 && (
+                    {like === 1 && (
                         <span className="flex items-center gap-1">{songNarrow.likes} <IoHeartOutline/></span>)}
-                    {songNarrow.edit === 1 && (<span className="flex items-center gap-1"> Edit <EditIcon/></span>)}
+                    {edit === 1 && (<span className="flex items-center gap-1"> Edit <EditIcon/></span>)}
                 </div>
             </div>
         </div>

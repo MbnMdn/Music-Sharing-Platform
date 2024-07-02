@@ -56,15 +56,15 @@ export default function SongCard() {
             <div className="flex overflow-x-auto scrollbar-hide">
                 {/*<div className="gap-2 grid grid-cols-2 sm:grid-cols-5 m-0 p-0">*/}
                 {list.map((item, index) => (
-                    <div className="rounded-lg pr-14 mb-5">
+                    <div className="rounded-lg pr-14 mb-5" key={item.title}>
                         <Image
+                            alt={item.title}
                             isZoomed
                             shadow="sm"
                             radius="lg"
                             width="100%"
-                            className="w-full object-cover min-h-[150px] min-w-[150px]"
+                            className="w-full object-cover min-h-[150px] min-w-[150px] rounded-md"
                             src={MusicPic.src}
-
                         />
                         <div className="flex justify-between">
                             <div className="p-1">

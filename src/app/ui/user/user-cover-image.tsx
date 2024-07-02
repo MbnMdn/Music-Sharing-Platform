@@ -1,4 +1,3 @@
-import {Image} from "@nextui-org/react";
 import SingerPic from "@/app/ui/dashboard/assets/singer.png";
 import React from "react";
 

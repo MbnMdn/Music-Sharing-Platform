@@ -44,7 +44,7 @@ export default function MostlyPlayed() {
             <h1 className="text-4xl font-bold mb-11">Mostly Played</h1>
             {bands.map((band) => (
                 // eslint-disable-next-line react/jsx-key
-                <div className="grid  grid-cols-[10%_25%_50%_5%] gap-0 mb-1 ">
+                <div className="grid  grid-cols-[10%_25%_50%_5%] gap-0 mb-1" key={band.id}>
                     <div className={"text-7xl font-bold mr-4 "}>{band.id}</div>
                     <div className="items-center">
                         <img src={MusicPic.src} alt={band.name} className="w-16 h-16 object-cover rounded"/>
