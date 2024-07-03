@@ -1,24 +1,33 @@
-import {Button, Image} from "@nextui-org/react";
+import {Image} from "@nextui-org/react";
 import MusicPic from "@/app/ui/dashboard/assets/music-pic.jpg";
 import {HeartIcon} from "@/app/ui/dashboard/MusicPlayer/HeartIcon";
 import {RepeatOneIcon} from "@/app/ui/dashboard/MusicPlayer/RepeatOneIcon";
 import {PreviousIcon} from "@/app/ui/dashboard/MusicPlayer/PreviousIcon";
-import {PauseCircleIcon} from "@/app/ui/dashboard/MusicPlayer/PauseCircleIcon";
 import {NextIcon} from "@/app/ui/dashboard/MusicPlayer/NextIcon";
 import {ShuffleIcon} from "@/app/ui/dashboard/MusicPlayer/ShuffleIcon";
+import {Button} from "@/components/ui/button"
+
+import {FaCirclePause, FaCirclePlay} from "react-icons/fa6";
 
 
-import { cn } from "@/lib/utils"
-import { Slider } from "@/components/ui/slider"
-type SliderProps = React.ComponentProps<typeof Slider>
-
+import {cn} from "@/lib/utils"
+import {Slider} from "@/components/ui/slider"
 import React from "react";
+import {SheetSide} from "@/app/SheetSide";
+
+type SliderProps = React.ComponentProps<typeof Slider>
 
 export default function GlassPlayer() {
     const [liked, setLiked] = React.useState(false);
+    const [paused, setPaused] = React.useState(false);
+    const [shuffle, setShuffle] = React.useState(false);
+    const [repeat, setRepeat] = React.useState(false);
 
+
+    // @ts-ignore
     return (
         <div>
+            {/*<SheetSide/>*/}
             {/*<div className="relative border border-white/0 rounded-2xl bg-white/5 w-52 max-h-96 hover:bg-base-100/5">*/}
             <div className="relative card w-full max-h-96 glass hover:bg-base-100/25">
                 <span
@@ -36,20 +45,17 @@ export default function GlassPlayer() {
                         />
                     </div>
                 </div>
-                <div className="card-body py-1">
+                <div className="card-body py-1 ">
                     <div className="grid grid-cols-6  gap-6 md:gap-4 items-center justify-center py-3">
                         <div className="flex flex-col col-span-6 md:col-span-8">
                             <div className="flex justify-between items-start">
-                                <div className="flex flex-col gap-0">
-                                    <h3 className="font-semibold text-foreground/90">Daily Mix</h3>
-                                    <p className="text-small text-foreground/80">12 Tracks</p>
+                                <div className="flex flex-col gap-0 ">
+                                    <h3 className="font-semibold text-base text-foreground/90 text-white">Daily Mix</h3>
+                                    <p className="text-xs text-foreground/80 text-white">12 Tracks</p>
                                 </div>
                                 <Button
-                                    isIconOnly
-                                    className="text-default-900/60 data-[hover]:bg-foreground/10 -translate-y-2 translate-x-2"
-                                    radius="full"
-                                    variant="light"
-                                    onPress={() => setLiked((v) => !v)}
+                                    className="text-default-900/60 data-[hover]:bg-foreground/10 -translate-y-2 translate-x-2 bg-transparent  hover:bg-transparent"
+                                    onClick={() => setLiked((v) => !v)}
                                 >
                                     <HeartIcon
                                         className={liked ? "[&>path]:stroke-transparent" : ""}
@@ -78,53 +84,46 @@ export default function GlassPlayer() {
                                 />
 
                                 <div className="flex justify-between">
-                                    <p className="text-small">1:23</p>
-                                    <p className="text-small text-foreground/50">4:32</p>
+                                    <p className="text-xs">1:23</p>
+                                    <p className="text-xs text-right">4:32</p>
                                 </div>
                             </div>
 
                             <div className="flex w-full items-center justify-center">
                                 <Button
-                                    isIconOnly
-                                    className="data-[hover]:bg-foreground/10"
-                                    radius="full"
-                                    variant="light"
+                                    className="data-[hover]:bg-foreground/10  bg-transparent hover:bg-transparent  m-0 p-1"
+                                    onClick={() => setRepeat((v) => !v)}
                                 >
-                                    <RepeatOneIcon className="text-foreground/80" width={undefined}
-                                                   height={undefined}/>
+                                    <RepeatOneIcon className={repeat ? "text-purple-200" : " text-white"}
+                                                   width={undefined}
+                                                   height={undefined} size={20}/>
                                 </Button>
                                 <Button
-                                    isIconOnly
-                                    className="data-[hover]:bg-foreground/10"
-                                    radius="full"
-                                    variant="light"
+                                    className="data-[hover]:bg-foreground/10  bg-transparent hover:bg-transparent  m-0 p-1"
                                 >
-                                    <PreviousIcon width={undefined} height={undefined}/>
+                                    <PreviousIcon width={undefined} height={undefined} size={20}/>
                                 </Button>
                                 <Button
-                                    isIconOnly
-                                    className="w-auto h-auto data-[hover]:bg-foreground/10"
-                                    radius="full"
-                                    variant="light"
+                                    className="data-[hover]:bg-foreground/10  bg-transparent hover:bg-transparent  m-0 p-1"
+                                    onClick={() => setPaused((v) => !v)}
                                 >
-                                    <PauseCircleIcon size={54} width={undefined} height={undefined}/>
+                                    {paused ? <FaCirclePlay size={38}/> :
+                                        <FaCirclePause size={38}/>
+                                    }
                                 </Button>
                                 <Button
-                                    isIconOnly
-                                    className="data-[hover]:bg-foreground/10"
-                                    radius="full"
-                                    variant="light"
+                                    className="data-[hover]:bg-foreground/10  bg-transparent hover:bg-transparent  m-0 p-1"
                                 >
-                                    <NextIcon width={undefined} height={undefined}/>
+                                    <NextIcon width={undefined} height={undefined} size={20}/>
                                 </Button>
+                                {/*<FaCirclePlay />*/}
                                 <Button
-                                    isIconOnly
-                                    className="data-[hover]:bg-foreground/10"
-                                    radius="full"
-                                    variant="light"
+                                    className="data-[hover]:bg-foreground/10  bg-transparent hover:bg-transparent m-0 p-2"
+                                    onClick={() => setShuffle((v) => !v)}
+
                                 >
-                                    <ShuffleIcon className="text-foreground/80" width={undefined}
-                                                 height={undefined}/>
+                                    <ShuffleIcon className={shuffle ? "text-purple-200" : " text-white"} width={undefined}
+                                                 height={undefined} size={18}/>
                                 </Button>
                             </div>
                         </div>
@@ -137,24 +136,3 @@ export default function GlassPlayer() {
         ;
 }
 
-
-{/*<span*/
-}
-{/*    className="absolute top-1/4 left-[-5%] h-12 w-12 bg-gradient-to-br from-green-400 via-teal-400 to-blue-400 rounded-full shadow-lg"*/
-}
-{/*></span>*/
-}
-{/*<span*/
-}
-{/*    className="absolute top-[70%] left-[-10%] h-24 w-24 bg-gradient-to-tr from-orange-400 to-yellow-400 rounded-full shadow-lg"*/
-}
-{/*></span>*/
-}
-{/*<span*/
-}
-{/*    className="absolute bottom-1/2 right-[85%] h-96 w-44 bg-gradient-to-tl from-pink-500 via-purple-500 to-indigo-500 rounded-full shadow-lg blur-3xl"*/
-}
-{/*></span>*/
-}
-{/*card w-56 glass*/
-}

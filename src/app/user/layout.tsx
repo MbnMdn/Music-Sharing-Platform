@@ -2,8 +2,6 @@
 
 import SideNav from '@/app/ui/dashboard/sidenav';
 import React from "react";
-import MusicPlayer from "@/app/ui/dashboard/music-player";
-import Play from "@/app/ui/dashboard/play";
 import Breadcrumbs from "@/app/ui/dashboard/breadcrumbs";
 import SearchBar from "@/app/ui/dashboard/search-bar";
 
@@ -14,11 +12,12 @@ export default function Layout({children}: { children: React.ReactNode }) {
                 <SideNav/>
             </div>
             <div className="flex-grow p-6 md:overflow-y-auto md:p-11">
-                <div className="flex space-x-20 justify-between">
+                <div className="flex space-x-20 justify-between relative bg-neutral-900 w-full">
                     <Breadcrumbs/>
                     <SearchBar/>
                 </div>
-                {children}</div>
+                {children}
+            </div>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 // @ts-ignore
-export const ShuffleIcon = ({size = 24, width, height, ...props}) => (
+export const ShuffleIcon = ({size = 18, width, height, ...props}) => (
     <svg
         aria-hidden="true"
         fill="none"

@@ -3,9 +3,9 @@ import React from "react";
 // @ts-ignore
 
 export const HeartIcon = ({
-                              size = 24,
-                              width,
-                              height,
+                              size = 16,
+                              width = 24,
+                              height = 24,
                               strokeWidth = 1.5,
                               fill = "none",
                               ...props
@@ -15,6 +15,7 @@ export const HeartIcon = ({
         fill={fill}
         focusable="false"
         height={size || height}
+        stroke="24px"
         role="presentation"
         viewBox="0 0 24 24"
         width={size || width}
