@@ -86,8 +86,8 @@ function UploadForm({className}: React.ComponentProps<"form">) {
                     <Input type="text" id="album" placeholder="What album does this song belong to?"/>
                 </div>
                 <div className="grid gap-2 w-5/12">
-                    <Label htmlFor="year">Publish year</Label>
-                    <Input type="number" id="year" placeholder="When was this song published?"/>
+                    <Label htmlFor="year">Release year</Label>
+                    <Input type="number" id="year" placeholder="What year was this song released?"/>
                 </div>
             </div>
 

@@ -108,6 +108,17 @@
 }
 
 
+.songCover {
+  background-color: transparent;
+  background-image: linear-gradient(
+          135deg,
+          rgb(255 255 255 / var(--glass-opacity,6%)) 0%,
+          rgb(0 0 0 / 0%) 100%
+  );
+  box-shadow: 0 0 0 1px rgb(255 255 255 / var(--glass-border-opacity, 10%)) inset,
+  0 0 0 2px rgb(0 0 0 / 5%);
+}
+
 /*.slider {*/
 /*  display: block;*/
 /*  !*width: 100px;*!*/
