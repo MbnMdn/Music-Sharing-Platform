@@ -1,8 +1,8 @@
 import SingerPic from "@/app/ui/dashboard/assets/singer.png";
 import React from "react";
-import {Button} from "@/components/ui/button";
 
 import {HoverCard, HoverCardContent, HoverCardTrigger,} from "@/components/ui/hover-card"
+import {FiInfo} from "react-icons/fi";
 
 export default function UserCoverImage() {
     return (
@@ -17,34 +17,39 @@ export default function UserCoverImage() {
             {/*/>*/}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <div className="">
-                <img src={SingerPic.src} width="100%" alt={SingerPic.src} height="100%"
+                <img src={SingerPic.src} width="100%" alt={SingerPic.src}
                      className="w-screen rounded-none"/>
-
-
-                <HoverCard>
-                    <HoverCardTrigger asChild>
-                        <p className="relative top-[-100px] left-10 m-4 text-6xl text-white font-bold">Taylor Swift</p>
-                    </HoverCardTrigger>
-                    <HoverCardContent className="w-80">
-                    <div className="flex justify-between space-x-4">
-                        <div className="space-y-1">
-                            <h4 className="text-sm font-semibold">User statistics:</h4>
-                            <p className="text-sm">
-                                Total listeners: 1324567
-                            </p>
-                            <p className="text-sm">
-                                Total views: 1324567
-                            </p>
-                            <div className="flex items-center pt-2">
-                                {/*<CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}*/}
-                                <span className="text-xs text-muted-foreground">
+                <div className="flex relative block top-[-85px] left-10 gap-3">
+                    <p className="  text-6xl text-white font-bold  ">Taylor Swift</p>
+                    <div className="self-center">
+                        <HoverCard>
+                            <HoverCardTrigger asChild>
+                                <FiInfo className="block" size={20}/>
+                            </HoverCardTrigger>
+                            <HoverCardContent className="w-80">
+                                <div className="flex justify-between space-x-4">
+                                    <div className="space-y-1">
+                                        <h4 className="text-sm font-semibold">User statistics:</h4>
+                                        <p className="text-sm">
+                                            Total listeners: 1324567
+                                        </p>
+                                        <p className="text-sm">
+                                            Total views: 1324567
+                                        </p>
+                                        <div className="flex items-center pt-2">
+                                            {/*<CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}*/}
+                                            <span className="text-xs text-muted-foreground">
                 Joined December 2021
               </span>
-                            </div>
-                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </HoverCardContent>
+                        </HoverCard>
                     </div>
-                    </HoverCardContent>
-                </HoverCard>
+
+                </div>
+
 
             </div>
         </div>
