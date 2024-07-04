@@ -19,8 +19,8 @@ export default function Form() {
                 <Card className="bg-transparent border-none shadow-none">
                     <CardHeader>
                         <CardTitle>Welcome back</CardTitle>
-                        <CardDescription>
-                            lorem lkeofjbwfnwe cw ciwubc wi c w cviw cwe cw cwec wecfwefnwoe
+                        <CardDescription className="text-justify">
+                            We're thrilled to see you again. Log in to rediscover your favorite tunes and the latest music trends.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
@@ -41,17 +41,16 @@ export default function Form() {
                         </div>
                         <div className="space-y-1">
                             <Label htmlFor="username">Password</Label>
-                            <Input id="password" defaultValue="Password" type="password" className="text-neutral-500"/>
+                            <Input id="password" placeholder="•••••••••"  type="password" className="text-neutral-500"/>
                         </div>
                     </CardContent>
                     <CardFooter className="justify-around flex-col gap-4">
-                        <Button className="w-full bg-violet-950">Login</Button>
+                        <Button className="w-full bg-violet-950 hover:bg-violet-800">Login</Button>
 
                         <div className="divider">OR</div>
 
                         <button
                             className="w-full btn  flex items-center gap-2 m-0 p-0 bg-transparent border-b-violet-200 hover:bg-violet-50">
-                            {/*<FaGoogle className=""/>*/}
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
                                  viewBox="0 0 48 48">
                                 <path fill="#FFC107"
@@ -74,8 +73,8 @@ export default function Form() {
                 <Card className="bg-transparent border-none shadow-none">
                     <CardHeader>
                         <CardTitle>Sign Up</CardTitle>
-                        <CardDescription>
-                            bbeubde ebdeid dbdneid end iednei eidneifenf ndied wndiw
+                        <CardDescription className="text-justify">
+                            Your musical journey starts here! Stay connected with your favorite artists and discover new tracks.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
@@ -84,16 +83,20 @@ export default function Form() {
                             <Input id="username" placeholder="Enter your email"/>
                         </div>
                         <div className="space-y-1">
+                            <Label htmlFor="name">Name</Label>
+                            <Input id="username" placeholder="Enter your name"/>
+                        </div>
+                        <div className="space-y-1">
                             <Label htmlFor="name">Username</Label>
                             <Input id="username" placeholder="Enter your username"/>
                         </div>
                         <div className="space-y-1">
                             <Label htmlFor="username">Password</Label>
-                            <Input id="password" defaultValue="Password" type="password" className="text-neutral-500"/>
+                            <Input id="password" placeholder="•••••••••" type="password" className="text-neutral-500"/>
                         </div>
                     </CardContent>
                     <CardFooter className="justify-around">
-                        <Button className="w-full bg-violet-950">Create Account</Button>
+                        <Button className="w-full bg-violet-950 hover:bg-violet-800">Create Account</Button>
                     </CardFooter>
                 </Card>
             </TabsContent>

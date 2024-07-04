@@ -9,6 +9,8 @@ import {FiHome} from "react-icons/fi";
 import {HiOutlineUser} from "react-icons/hi";
 import {TbLogout, TbNotification} from "react-icons/tb";
 import {RiHeart3Line} from "react-icons/ri";
+import { TbUpload } from "react-icons/tb";
+
 
 
 import Link from 'next/link';
@@ -19,7 +21,7 @@ const links = [
     {name: 'Home', href: '/dashboard', icon: FiHome},
     {name: 'Profile', href: '/user', icon: HiOutlineUser,},
     // {name: 'Favorites', href: '/dashboard/customers', icon: RiHeart3Line},
-    // {name: 'Notifications', href: '/dashboard/customers', icon: TbNotification},
+    // {name: 'Upload', href: '', icon: TbUpload},
     {name: 'Log Out', href: '/register', icon: TbLogout},
 ];
 

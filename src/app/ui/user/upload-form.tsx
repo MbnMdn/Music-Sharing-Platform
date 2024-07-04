@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from "react"
 
 import {cn} from "@/lib/utils"
@@ -16,9 +18,10 @@ import {Input} from "@/components/ui/input"
 import {Label} from "@/components/ui/label"
 import {useMediaQuery} from "@react-hook/media-query";
 import {Textarea} from "@/components/ui/textarea"
+import {IoIosAddCircleOutline} from "react-icons/io";
 
 
-export function DrawerDialogDemo() {
+export function UploadDrawer() {
     const [open, setOpen] = React.useState(false)
     const isDesktop = useMediaQuery("(min-width: 768px)")
 
@@ -44,7 +47,11 @@ export function DrawerDialogDemo() {
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <Button variant="outline">Edit Profile</Button>
+                <Button
+                    className="fixed bottom-5 right-5  bg-violet-900 text-white px-4 py-2 rounded-full shadow-lg hover:bg-violet-700 flex gap-2">
+                    <IoIosAddCircleOutline size={16}/>
+                    Add new song
+                </Button>
             </DrawerTrigger>
             <DrawerContent className="flex align-middle items-center">
                 <DrawerHeader className="text-left">
@@ -107,8 +114,6 @@ function UploadForm({className}: React.ComponentProps<"form">) {
                 <Label htmlFor="lyrics">Lyrics</Label>
                 <Textarea placeholder="Enter the lyrics"/>
             </div>
-
-
         </form>
     )
 }

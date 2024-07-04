@@ -5,16 +5,12 @@ import MusicPic from '../dashboard/assets/music-pic.jpg'
 import {ClockCircleLinearIcon, EditIcon} from "@nextui-org/shared-icons";
 import {Image} from "@nextui-org/react";
 import {motion} from "framer-motion"
-import { IoHeartOutline } from "react-icons/io5";
+import {IoHeartOutline} from "react-icons/io5";
+import {Separator} from "@/components/ui/separator";
 
 
 const songNarrow = {
     id: 1,
-    // edit: 1,
-    // singer: 1,
-    // view: 1,
-    // time: 1,
-    // like: 1,
     singerName: 'Taylor Swift',
     name: 'Cruel Summer',
     plays: '111,340',
@@ -22,7 +18,7 @@ const songNarrow = {
     likes: '345',
     // image: {MusicPic},
 };
-export default function SongNarrow({edit = 1, singer = 1, view = 0, time = 1, like = 0}) {
+export default function SongNarrow({edit = 1, singer = 1, view = 0, time = 1, like = 0,  divider = 0}) {
     const [hovered, setHovered] = React.useState(false);
 
     return (
@@ -74,7 +70,8 @@ export default function SongNarrow({edit = 1, singer = 1, view = 0, time = 1, li
                         {/*>{songNarrow.plays}<EyeIcon/></motion.span>*/}
 
                         {(like === 1 || hovered) && (
-                            <span className="flex items-center gap-1 transition delay-150">{songNarrow.likes} <IoHeartOutline/></span>)}
+                            <span className="flex items-center gap-1 transition delay-150">{songNarrow.likes}
+                                <IoHeartOutline/></span>)}
                         {time === 1 && (
                             <span
                                 className="flex items-center gap-1">{songNarrow.duration}<ClockCircleLinearIcon/></span>)}
@@ -82,6 +79,7 @@ export default function SongNarrow({edit = 1, singer = 1, view = 0, time = 1, li
                     </div>
                 </div>
             </div>
+            {divider == 1 && <div className="divider m-0 p-0"></div>}
         </motion.div>
     );
 };
