@@ -1,7 +1,6 @@
 import type {Metadata} from "next";
 import {Bungee_Outline, Inter, Nunito} from "next/font/google";
 import "./globals.css";
-import {Providers} from "./providers";
 import { Londrina_Outline } from '@next/font/google';
 import React from "react";
 

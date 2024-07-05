@@ -1,11 +1,7 @@
-
 import React from 'react'
-import Zoom from 'react-medium-image-zoom'
-import Image from "next/image";
 import SingerCard from "@/app/ui/singers/singer-card";
 
 import MusicPic from "@/app/ui/dashboard/assets/music-pic.jpg";
-
 
 const singers = [
     {
@@ -93,7 +89,8 @@ const singers = [
 export default function Singers() {
     return (
         <div className="scrollable-container">
-            <div className="grid grid-cols-5 gap-3">
+            <div
+                className="grid grid-cols-2 max-[600px]:grid-cols-2 max-[768px]:grid-cols-3 min-[900px]:grid-cols-3  lg:grid-cols-4 gap-2">
                 {singers.map((singer, index) => (
                     <SingerCard song={singer} key={index}/>
                 ))}

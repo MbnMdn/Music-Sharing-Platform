@@ -123,7 +123,7 @@ export default function LyricsDrawer() {
                 <p className="text-sm lg:text-sm font-semibold flex gap-1">Lyrics <MdOutlineLyrics
                     className="md:self-center"/></p>
             </DrawerTrigger>
-            <DrawerContent className="flex align-middle items-center  bg-neutral-800 text-gray-100 h-2/3">
+            <DrawerContent className="flex align-middle items-center text-gray-100 h-2/3  bg-neutral-800 border-none">
                 <DrawerHeader className="text-left">
                     <DrawerTitle>{song.name}</DrawerTitle>
                     <DrawerDescription>
@@ -134,7 +134,7 @@ export default function LyricsDrawer() {
                 </div>
                 <DrawerFooter className="pt-2">
                     <DrawerClose asChild>
-                        <Button variant="outline" className="block bg-transparent mt-5">Close</Button>
+                        <Button variant="outline" className="block bg-transparent hover:bg-neutral-700 hover:text-white mt-5">Close</Button>
                     </DrawerClose>
                 </DrawerFooter>
             </DrawerContent>

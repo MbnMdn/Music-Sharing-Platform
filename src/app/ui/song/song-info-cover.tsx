@@ -16,7 +16,10 @@ const song = {
     lyrics: 'hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor',
     release_year: '2002',
     genre: 'genre',
-    uploaded_by: 'Erfan'
+    uploaded_by: 'Erfan',
+    likes: 123,
+    comments: 12,
+    views: 140,
 };
 
 export default function SongInfoCover() {
@@ -24,7 +27,7 @@ export default function SongInfoCover() {
 
     return (
         <div>
-            <div className="songCover relative card w-full  glass">
+            <div className="songCover relative card w-full glass my-5">
                 {/*<span*/}
                 {/*    className="absolute bottom-[50%] left-[-5%] h-44 w-44 bg-gradient-to-tl from-pink-500 via-purple-500 to-indigo-500 rounded-full shadow-lg blur-3xl"*/}
                 {/*></span>*/}
@@ -66,9 +69,10 @@ export default function SongInfoCover() {
                                                 />
                                                 <SongDetails  song={song}/>
                                             </div>
-                                            <div className="mb-5">
-                                                <p className=" text-3xl lg:text-5xl font-bold">{song.name}</p>
-                                                <p className="text-2xl lg:text-3xl font-bold">{song.singer}</p>
+                                            <div>
+                                                <p className=" text-4xl lg:text-5xl font-bold">{song.name}</p>
+                                                <p className="text-xl lg:text-3xl font-semibold mb-1">{song.singer}</p>
+                                                <LyricsDrawer/>
                                             </div>
                                         </div>
 

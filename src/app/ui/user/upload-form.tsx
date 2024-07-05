@@ -16,14 +16,14 @@ import {
 } from "@/components/ui/drawer"
 import {Input} from "@/components/ui/input"
 import {Label} from "@/components/ui/label"
-import {useMediaQuery} from "@react-hook/media-query";
+// import {useMediaQuery} from "@react-hook/media-query";
 import {Textarea} from "@/components/ui/textarea"
 import {IoIosAddCircleOutline} from "react-icons/io";
 
 
 export function UploadDrawer() {
     const [open, setOpen] = React.useState(false)
-    const isDesktop = useMediaQuery("(min-width: 768px)")
+    // const isDesktop = useMediaQuery("(min-width: 768px)")
 
     // if (isDesktop) {
     //     return (
@@ -48,25 +48,26 @@ export function UploadDrawer() {
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
                 <Button
-                    className="fixed bottom-5 right-5  bg-violet-900 text-white px-4 py-2 rounded-full shadow-lg hover:bg-violet-700 flex gap-2">
+                    className="fixed bottom-16 md:bottom-5 right-5  bg-violet-900 text-white px-4 py-2 rounded-full shadow-lg hover:bg-violet-700 flex gap-2">
                     <IoIosAddCircleOutline size={16}/>
                     Add new song
                 </Button>
             </DrawerTrigger>
-            <DrawerContent className="flex align-middle items-center">
+            <DrawerContent className="flex align-middle items-center bg-neutral-800 border-none">
                 <DrawerHeader className="text-left">
-                    <DrawerTitle>Edit profile</DrawerTitle>
+                    <DrawerTitle>Upload new song</DrawerTitle>
                     <DrawerDescription>
-                        Make changes to your profile here. Click save when you are done.
+
                     </DrawerDescription>
                 </DrawerHeader>
                 <UploadForm className="px-4"/>
-                <Button type="submit" className="block">Upload</Button>
-                <DrawerFooter className="pt-2">
+                <div className="flex gap-10">
+                    <Button type="submit" variant="outline" className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5">Upload</Button>
                     <DrawerClose asChild>
-                        <Button variant="outline" className="block">Cancel</Button>
+                        <Button variant="outline" className="block bg-transparent hover:bg-neutral-700 hover:text-white my-5">Cancel</Button>
                     </DrawerClose>
-                </DrawerFooter>
+                </div>
+
             </DrawerContent>
         </Drawer>
     )
@@ -74,43 +75,50 @@ export function UploadDrawer() {
 
 function UploadForm({className}: React.ComponentProps<"form">) {
     return (
-        <form className={cn("grid items-start gap-4 w-1/2", className)}>
-            <div className="flex justify-between">
-                <div className="grid gap-2 w-5/12">
+        <form className={cn("grid items-start gap-0 w-4/5 md:w-5/6 lg:w-2/3 overflow-y-auto", className)}>
+
+            <div className="flex flex-col md:flex-row justify-between mb-0 md:mb-3">
+                <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
                     <Label htmlFor="name">Name</Label>
-                    <Input type="text" id="name" placeholder="What is the name of this song?"/>
+                    <Input className="bg-neutral-800" type="text" id="name"
+                           placeholder="What is the name of this song?"/>
                 </div>
-                <div className="grid gap-2 w-5/12">
+                <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
                     <Label htmlFor="singer">Singer</Label>
-                    <Input type="text" id="singer" placeholder="Who is the singer of this song?"/>
+                    <Input className="bg-neutral-800" type="text" id="singer"
+                           placeholder="Who is the singer of this song?"/>
                 </div>
             </div>
 
 
-            <div className="flex justify-between">
-                <div className="grid gap-2 w-5/12">
+            <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
+                <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
                     <Label htmlFor="album">Album</Label>
-                    <Input type="text" id="album" placeholder="What album does this song belong to?"/>
+                    <Input className="bg-neutral-800" type="text" id="album"
+                           placeholder="What album does this song belong to?"/>
                 </div>
-                <div className="grid gap-2 w-5/12">
+                <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
                     <Label htmlFor="year">Release year</Label>
-                    <Input type="number" id="year" placeholder="What year was this song released?"/>
+                    <Input className="bg-neutral-800" type="number" id="year"
+                           placeholder="What year was this song released?"/>
                 </div>
             </div>
 
 
-            <div className="flex justify-between">
-                <div className="grid gap-2 w-5/12">
+            <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
+                <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
                     <Label htmlFor="genre">Genre</Label>
-                    <Input type="text" id="genre" placeholder="What is the genre of this song?"/>
+                    <Input className="bg-neutral-800" type="text" id="genre"
+                           placeholder="What is the genre of this song?"/>
                 </div>
-                <div className="grid gap-2 items-end w-5/12">
-                    <Input id="cover" type="file"/>
+                <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
+                    <Label htmlFor="genre">Cover image</Label>
+                    <Input className="bg-neutral-800" id="cover" type="file"/>
                 </div>
             </div>
 
 
-            <div className="grid gap-2">
+            <div className="grid gap-2 mb-3">
                 <Label htmlFor="lyrics">Lyrics</Label>
                 <Textarea placeholder="Enter the lyrics"/>
             </div>

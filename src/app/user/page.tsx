@@ -10,18 +10,16 @@ export default function Page() {
             <UserCoverImage/>
             <UploadDrawer/>
 
-            <SongNarrow/>
-            <SongNarrow/>
-            <SongNarrow/>
-            <SongNarrow/>
-            <SongNarrow/>
-            <SongNarrow/>
-            <SongNarrow/>
-            <SongNarrow/>
-            <SongNarrow/>
-            <SongNarrow/>
-            <SongNarrow/>
-            <SongNarrow/>
+            <SongNarrow hover={1}/>
+            <SongNarrow hover={1}/>
+            <SongNarrow hover={1}/>
+            <SongNarrow hover={1}/>
+            <SongNarrow hover={1}/>
+            <SongNarrow hover={1}/>
+            <SongNarrow hover={1}/>
+            <SongNarrow hover={1}/>
+            <SongNarrow hover={1}/>
+
 
         </>
     );

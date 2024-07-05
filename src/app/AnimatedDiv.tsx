@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 
 const AnimatedDiv = () => {
     return (
@@ -14,11 +14,6 @@ const AnimatedDiv = () => {
             }}
             transition={{duration: 0.5}}
         >
-
-
-
-
-
         </motion.div>
     );
 };

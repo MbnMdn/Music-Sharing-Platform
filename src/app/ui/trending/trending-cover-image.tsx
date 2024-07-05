@@ -1,21 +1,12 @@
 import SingerPic from "@/app/ui/dashboard/assets/singer.png";
 import React from "react";
 
-import {HoverCard, HoverCardContent, HoverCardTrigger,} from "@/components/ui/hover-card"
-import {FiInfo} from "react-icons/fi";
-
 export default function TrendingCoverImage() {
     return (
-        <div className="flex mt-10">
-            <div className="">
-                <img src={SingerPic.src} width="100%" alt={SingerPic.src}
-                     className="w-screen rounded-none"/>
-                <div className="flex relative block top-[-85px] left-10 gap-3">
-                    <p className="  text-6xl text-white font-bold  ">Trending</p>
-                    <div className="self-center">
-
-                    </div>
-                </div>
+        <div className="flex my-6 md:my-10">
+            <div className="relative ">
+                <img src={SingerPic.src} width="100%" alt={SingerPic.src} className="w-screen rounded-none"/>
+                <p className="absolute bottom-[10%] left-[5%] text-5xl lg:text-6xl text-white font-bold flex items-center gap-2">Trending</p>
             </div>
         </div>
     );

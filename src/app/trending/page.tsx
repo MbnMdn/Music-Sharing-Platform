@@ -8,21 +8,16 @@ export default function Page() {
     return (
         <>
             <TrendingCoverImage/>
-
-            <SongNarrow edit={0}/>
-            <SongNarrow edit={0}/>
-            <SongNarrow edit={0}/>
-            <SongNarrow edit={0}/>
-            <SongNarrow edit={0}/>
-            <SongNarrow edit={0}/>
-            <SongNarrow edit={0}/>
-            <SongNarrow edit={0}/>
-            <SongNarrow edit={0}/>
-            <SongNarrow edit={0}/>
-            <SongNarrow edit={0}/>
-
-
-
+            <SongNarrow edit={0} hover={1}/>
+            <SongNarrow edit={0} hover={1}/>
+            <SongNarrow edit={0} hover={1}/>
+            <SongNarrow edit={0} hover={1}/>
+            <SongNarrow edit={0} hover={1}/>
+            <SongNarrow edit={0} hover={1}/>
+            <SongNarrow edit={0} hover={1}/>
+            <SongNarrow edit={0} hover={1}/>
+            <SongNarrow edit={0} hover={1}/>
+            <SongNarrow edit={0} hover={1}/>
         </>
     );
 }

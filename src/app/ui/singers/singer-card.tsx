@@ -4,7 +4,7 @@ import React from "react";
 
 export default function SingerCard({song}: { song: any }) {
     return (
-        <div className=" pr-14 mb-5 " key={song.song_name}>
+        <div className=" px-5 py-3 " key={song.song_name}>
             <div className=" rounded-md zoom">
                 <Image
                     alt={song.singer}
