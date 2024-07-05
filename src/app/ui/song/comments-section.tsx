@@ -1,10 +1,10 @@
 import CommentNarrow from "@/app/ui/song/comment-narrow";
 
 export default function CommentsSection() {
-    return(
+    return (
         <div className=" mt-10">
             <p className="text-lg font-semibold">Comments</p>
-            <div className="m-5 space-y-5">
+            <div className="m-0 md:m-5 space-y-5">
                 <CommentNarrow/>
                 <CommentNarrow/>
                 <CommentNarrow/>
@@ -14,7 +14,6 @@ export default function CommentsSection() {
                 <CommentNarrow/>
                 <CommentNarrow/>
             </div>
-
         </div>
     );
 }

@@ -28,7 +28,7 @@ export default function CommentNarrow() {
                 <div className="flex-grow ml-6">
                     <div className="flex justify-between">
                         <div className="text-accent font-semibold">{comment.name}</div>
-                        <div className="flex gap-6">
+                        <div className="flex gap-2 md:gap-6">
                             <div className="text-xs  text-zinc-500">{comment.date}</div>
                             <div className="text-xs  text-zinc-500">{comment.time}</div>
                         </div>

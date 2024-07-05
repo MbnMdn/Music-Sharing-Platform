@@ -10,7 +10,7 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
-import {useMediaQuery} from "@react-hook/media-query";
+// import {useMediaQuery} from "@react-hook/media-query";
 import {MdOutlineLyrics} from "react-icons/md";
 import MusicPic from "@/app/ui/dashboard/assets/music-pic.jpg";
 
@@ -115,13 +115,13 @@ const song = {
 
 export default function LyricsDrawer() {
     const [open, setOpen] = React.useState(false)
-    const isDesktop = useMediaQuery("(min-width: 768px)")
+    // const isDesktop = useMediaQuery("(min-width: 768px)")
 
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <p className="text-xs lg:text-base font-semibold flex gap-1">Lyrics <MdOutlineLyrics
-                    className="self-center"/></p>
+                <p className="text-sm lg:text-sm font-semibold flex gap-1">Lyrics <MdOutlineLyrics
+                    className="md:self-center"/></p>
             </DrawerTrigger>
             <DrawerContent className="flex align-middle items-center  bg-neutral-800 text-gray-100 h-2/3">
                 <DrawerHeader className="text-left">

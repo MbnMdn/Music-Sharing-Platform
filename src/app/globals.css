@@ -161,3 +161,24 @@
 .zoom:hover img {
   transform: scale(1.15);
 }
+
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: flex;
+  }
+}
+
+.mobile-only{
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-only {
+    display: flex;
+  }
+}

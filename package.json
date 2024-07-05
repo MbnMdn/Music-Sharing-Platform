@@ -34,6 +34,7 @@
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "react-medium-image-zoom": "^5.2.5",
+    "react-responsive": "^10.0.0",
     "react-scroll-motion": "^0.3.3",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
