@@ -1,5 +1,5 @@
 import React from "react";
-import Slider from "@/app/register/slider";
+import Slider from "@/app/ui/register/slider";
 import Form from "@/app/register/form";
 
 export default function Page() {
@@ -9,7 +9,7 @@ export default function Page() {
                 <div className="hidden md:block md:w-1/2 lg:w-2/3">
                     <Slider/>
                 </div>
-                <div className="flex md:w-1/2 lg:w-1/3 align-middle justify-around content-center p-1">
+                <div className=" h-screen items-center flex m-10 md:w-1/2 lg:w-1/3 align-middle justify-around content-center">
                     <Form/>
                 </div>
             </div>

@@ -135,3 +135,29 @@
 /*  background: linear-gradient(to left, rgba(100, 10, 100, 0.51), transparent);*/
 /*  pointer-events: none;*/
 /*}*/
+
+
+
+/*.zoom-container {*/
+/*  overflow: hidden;*/
+/*}*/
+
+/*.zoom-image:hover {*/
+/*  transform: scale(1.5);*/
+/*  transition: transform 0.1s ease;*/
+/*}*/
+
+
+.zoom {
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.zoom img {
+  width: 100%;
+  transition: 0.5s all ease-in-out;
+}
+
+.zoom:hover img {
+  transform: scale(1.15);
+}

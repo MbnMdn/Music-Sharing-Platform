@@ -1,21 +1,12 @@
 "use client"
 
-// import {
-//     UserGroupIcon,
-//     HomeIcon,
-//     DocumentDuplicateIcon,
-// } from '@heroicons/react/24/outline';
 import {FiHome} from "react-icons/fi";
 import {HiOutlineUser} from "react-icons/hi";
-import {TbLogout, TbNotification} from "react-icons/tb";
-import {RiHeart3Line} from "react-icons/ri";
-import { TbUpload } from "react-icons/tb";
-
+import {TbLogout} from "react-icons/tb";
 
 
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
-import clsx from 'clsx';
 
 const links = [
     {name: 'Home', href: '/dashboard', icon: FiHome},
@@ -35,11 +26,15 @@ export default function NavLinks() {
                     <Link
                         key={link.name}
                         href={link.href}
-                        className={clsx(
-                            'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-transparent p-3 text-sm font-medium hover:bg-neutral-800  md:flex-none md:justify-start md:p-2 md:px-3',
-                            // {},
-                        )}>
-                        <LinkIcon className="w-6 size-4 "/>
+                        className=
+                            "flex  h-[48px] grow items-center  justify-center  gap-2 rounded-md bg-transparent p-3 text-sm font-medium hover:bg-neutral-800 md:flex-row md:flex-none md:justify-start md:p-2 md:px-3"
+                    >
+                        {/*className={clsx(*/}
+                        {/*    'flex h-[48px] grow items-center justify-between gap-2 rounded-md bg-transparent p-3 text-sm font-medium hover:bg-neutral-800  md:flex-none md:justify-start md:p-2 md:px-3',*/}
+                        {/*    // {},*/}
+                        {/*)}>*/}
+
+                        <LinkIcon className="w-6 size-5 md:size-4 align-middle"/>
                         <p className="hidden text-base md:block ">{link.name}</p>
                     </Link>
                 );

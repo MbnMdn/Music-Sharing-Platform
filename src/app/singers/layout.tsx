@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="w-full flex-none md:w-60 mr-4 md:mt-5">
         <SideNav />
       </div>
-      <div className="flex-grow p-6 overflow-y-auto md:p-11">
+      <div className="flex-grow p-6 md:overflow-y-auto md:p-11">
         <div className="flex space-x-20 justify-between">
           <Breadcrumbs />
           <SearchBar />

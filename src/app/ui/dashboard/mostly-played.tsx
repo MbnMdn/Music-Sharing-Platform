@@ -1,7 +1,6 @@
 import React from 'react';
 import MusicPic from './assets/music-pic.jpg'
 import {IoIosArrowForward} from "react-icons/io";
-import {Bungee_Outline} from "next/font/google";
 
 export default function MostlyPlayed() {
 
@@ -38,13 +37,13 @@ export default function MostlyPlayed() {
         },
     ];
 
-
     return (
-        <div className="text-white grid">
+        <div className="text-white grid  ">
             <h1 className="text-4xl font-bold mb-11">Mostly Played</h1>
             {bands.map((band) => (
-                // eslint-disable-next-line react/jsx-key
-                <div className="grid  grid-cols-[10%_25%_50%_5%] gap-0 mb-1" key={band.id}>
+                <div
+                    className="grid grid-cols-[8%_25%_50%_5%] md:grid-cols-[2%_25%_50%_5%]  lg:grid-cols-[10%_25%_50%_5%] gap-0 mb-1 justify-around "
+                    key={band.id}>
                     <div className={"text-7xl font-bold mr-4 "}>{band.id}</div>
                     <div className="items-center">
                         <img src={MusicPic.src} alt={band.name} className="w-16 h-16 object-cover rounded"/>
@@ -52,7 +51,7 @@ export default function MostlyPlayed() {
                     <div className="content-center">
                         <div className="text-lg font-semibold">{band.name}</div>
                         <div className="text-sm">{band.subscribers}</div>
-                    </div >
+                    </div>
                     <div className="content-center"><IoIosArrowForward/></div>
                 </div>
             ))}

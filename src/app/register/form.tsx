@@ -9,7 +9,7 @@ import {Tabs, TabsContent, TabsList, TabsTrigger,} from "@/components/ui/tabs"
 
 export default function Form() {
     return (
-        <Tabs defaultValue="signin" className="w-[400px] justify-around ">
+        <Tabs defaultValue="signin" className="w-[350px] md:w-[400px] justify-around ">
             <TabsList className="grid w-full grid-cols-2 bg-violet-50">
                 <TabsTrigger value="signin">Sign In</TabsTrigger>
                 <TabsTrigger value="signup">Sign Up</TabsTrigger>

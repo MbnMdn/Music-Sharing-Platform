@@ -16,7 +16,7 @@ const comment = {
 
 export default function CommentNarrow() {
     return (
-        <div className=" text-white flex  rounded-md justify-between p-1">
+        <div className="flex flex-col text-white   rounded-md justify-between ">
             <div className="flex w-full  p-4">
                 <Image
                     alt={comment.username}
@@ -37,6 +37,7 @@ export default function CommentNarrow() {
                     <div className=" text-accent items-center mt-2 text-justify">{comment.comment}</div>
                 </div>
             </div>
+            <div className="divider m-0 p-0 "></div>
         </div>
     );
 };

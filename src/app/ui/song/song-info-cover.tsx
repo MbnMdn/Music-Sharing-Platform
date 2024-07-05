@@ -14,7 +14,8 @@ const song = {
     album: 'blah',
     lyrics: 'hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor',
     release_year: '2002',
-    genre: 'genre'
+    genre: 'genre',
+    uploaded_by: 'Erfan'
 };
 
 export default function SongInfoCover() {
@@ -55,6 +56,8 @@ export default function SongInfoCover() {
                                                         yea: {song.release_year}</p>
                                                     <div className="hidden md:block lg:block">&bull;</div>
                                                     <p className="text-xs lg:text-base font-semibold">Genre: {song.genre}</p>
+                                                    <div className="hidden md:block lg:block">&bull;</div>
+                                                    <p className="text-xs lg:text-base font-semibold">Upload: {song.uploaded_by}</p>
                                                 </div>
                                             </div>
                                         </div>
