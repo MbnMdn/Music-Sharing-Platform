@@ -1,8 +1,24 @@
+'use client'
+
 import SingerPic from "@/app/ui/dashboard/assets/singer.png";
 import React from "react";
 import UserStatsHover from "@/app/ui/user/user-stats-hover";
+import {useQuery} from "@apollo/client";
+import {GET_ARTIST} from "@/graphql/queries";
 
 export default function UserCoverImage() {
+
+    const {data, loading, error} = useQuery(GET_ARTIST, {
+        variables: {
+            "artist_id": 1,
+        }
+    });
+
+    console.log(data?.artist.name);
+    console.log(error)
+    console.log(loading)
+
+
     return (
         <div className="flex my-6 md:my-10">
             {/* eslint-disable-next-line jsx-a11y/alt-text*/}
@@ -28,8 +44,7 @@ export default function UserCoverImage() {
 
             <div className="relative ">
                 <img src={SingerPic.src} width="100%" alt={SingerPic.src} className="w-screen rounded-none"/>
-                <p className="absolute bottom-[10%] left-[5%] text-5xl lg:text-6xl text-white font-bold flex items-center gap-2">Taylor
-                    Swift <UserStatsHover/></p>
+                <p className="absolute bottom-[10%] left-[5%] text-5xl lg:text-6xl text-white font-bold flex items-center gap-2">{loading ? "loading" : data?.artist.name}<UserStatsHover/></p>
             </div>
         </div>
     );

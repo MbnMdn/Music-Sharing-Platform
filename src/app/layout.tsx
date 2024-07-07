@@ -1,14 +1,14 @@
 import type {Metadata} from "next";
 import {Bungee_Outline, Inter, Nunito} from "next/font/google";
 import "./globals.css";
-import { Londrina_Outline } from '@next/font/google';
+import {Londrina_Outline} from '@next/font/google';
 import React from "react";
-
+import {Providers} from "@/components/Providers";
 
 
 const inter = Inter({subsets: ["latin"]});
 const nunito = Nunito({subsets: ["latin"]});
-const bungee = Bungee_Outline({subsets: ["latin"],weight: '400',});
+const bungee = Bungee_Outline({subsets: ["latin"], weight: '400',});
 const londrina = Londrina_Outline({
     subsets: ['latin'], // Specify the subsets you want to include
     weight: '400', // Specify the font weight if needed
@@ -25,9 +25,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" data-theme="dark">
+        // <html lang="en" data-theme="dark">
+        <html lang="en">
         <body className={`bg-neutral-900 text-gray-100 ${inter.className}`}>
-            {children}
+        <Providers>{children}</Providers>
         </body>
         </html>
     );

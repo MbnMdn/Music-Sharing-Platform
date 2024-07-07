@@ -42,7 +42,7 @@ export default function MostlyPlayed() {
             <h1 className="text-4xl font-bold mb-11">Mostly Played</h1>
             {bands.map((band) => (
                 <div
-                    className="grid grid-cols-[8%_25%_50%_5%] md:grid-cols-[2%_25%_50%_5%]  lg:grid-cols-[10%_25%_50%_5%] gap-0 mb-1 justify-around "
+                    className="grid max-[600px]:grid-cols-[8%_25%_50%_5%] max-[768px]:grid-cols-[5%_25%_50%_5%] md:grid-cols-[2%_25%_50%_5%]  lg:grid-cols-[8%_25%_50%_5%] gap-0 mb-1 justify-around "
                     key={band.id}>
                     <div className={"text-7xl font-bold mr-4 "}>{band.id}</div>
                     <div className="items-center">

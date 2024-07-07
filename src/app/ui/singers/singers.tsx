@@ -2,6 +2,8 @@ import React from 'react'
 import SingerCard from "@/app/ui/singers/singer-card";
 
 import MusicPic from "@/app/ui/dashboard/assets/music-pic.jpg";
+import {useQuery} from "@apollo/client";
+import {GET_ARTIST} from "@/graphql/queries";
 
 const singers = [
     {

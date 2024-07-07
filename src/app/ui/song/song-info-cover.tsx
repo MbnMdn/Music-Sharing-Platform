@@ -5,6 +5,8 @@ import React from "react";
 import LyricsDrawer from "@/app/ui/song/lyrics-drawer";
 import {useMediaQuery} from "@react-hook/media-query";
 import SongDetails from "@/app/ui/song/song-details";
+import {useQuery} from "@apollo/client";
+import {GET_SONG, GET_TRENDING} from "@/graphql/queries";
 
 
 const song = {
@@ -12,7 +14,7 @@ const song = {
     cover: {MusicPic},
     name: 'Mockingbird',
     singer: 'Eminem',
-    album: 'blah',
+    // album: 'blah',
     lyrics: 'hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor',
     release_year: '2002',
     genre: 'genre',
@@ -22,8 +24,20 @@ const song = {
     views: 140,
 };
 
-export default function SongInfoCover() {
+export default function SongInfoCover({id}: { id: number }) {
     const isDesktop = useMediaQuery("(min-width: 768px)")
+
+
+    const {data, loading, error} = useQuery(GET_SONG, {
+        variables: {
+            "song_id": id,
+        }
+    });
+
+
+
+    console.log(error)
+    console.log(loading)
 
     return (
         <div>
@@ -42,18 +56,20 @@ export default function SongInfoCover() {
                                         {/*Desktop ------------------------------------------------------*/}
                                         <div className="desktop-only flex flex-col md:flex-row">
                                             <Image
-                                                alt={song.name}
-                                                height={100}
-                                                width={100}
+                                                alt={data?.track.title}
+                                                height={500}
+                                                width={500}
                                                 className="w-44 h-44 lg:w-60 lg:h-60 rounded-md self-center"
-                                                src={MusicPic.src}
+                                                src={data?.track.cover}
+                                                priority={true}
                                             />
+
                                             <div className="flex flex-col ml-6 justify-end">
                                                 <div className="mb-5">
-                                                    <p className=" text-3xl lg:text-5xl font-bold">{song.name}</p>
-                                                    <p className="text-2xl lg:text-3xl font-bold">{song.singer}</p>
+                                                    <p className=" text-3xl lg:text-5xl font-bold">{data?.track.title}</p>
+                                                    <p className="text-2xl lg:text-2xl font-bold">{data?.track.artist.name}</p>
                                                 </div>
-                                                <SongDetails  song={song}/>
+                                                <SongDetails song={song} data={data}/>
                                             </div>
                                         </div>
 
@@ -67,7 +83,7 @@ export default function SongInfoCover() {
                                                     className="w-40 h-40 lg:w-60 lg:h-60 md:w-44 md:h-44 rounded-md self-center"
                                                     src={MusicPic.src}
                                                 />
-                                                <SongDetails  song={song}/>
+                                                <SongDetails song={song} data={data}/>
                                             </div>
                                             <div>
                                                 <p className=" text-4xl lg:text-5xl font-bold">{song.name}</p>
@@ -75,7 +91,6 @@ export default function SongInfoCover() {
                                                 <LyricsDrawer/>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -86,23 +101,6 @@ export default function SongInfoCover() {
         </div>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //

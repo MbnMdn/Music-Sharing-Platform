@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "@/app/ui/register/slider";
-import Form from "@/app/register/form";
+import AuthForm from "@/app/register/auth-form";
 
 export default function Page() {
     return (
@@ -10,7 +10,7 @@ export default function Page() {
                     <Slider/>
                 </div>
                 <div className=" h-screen items-center flex m-10 md:w-1/2 lg:w-1/3 align-middle justify-around content-center">
-                    <Form/>
+                    <AuthForm/>
                 </div>
             </div>
         </div>

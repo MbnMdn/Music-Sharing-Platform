@@ -1,25 +1,22 @@
 import LyricsDrawer from "@/app/ui/song/lyrics-drawer";
 import React from "react";
-import EyeIcon from "@/app/ui/icons/eye-icon";
 
 
-export default function SongDetails({song}: { song: any }) {
+export default function SongDetails({song, data}: { song: any, data: any }) {
     return (
         <div
-            className="flex flex-col md:flex-row lg:flex-row gap-1 lg:gap-2 md:items-end lg:items-end">
+            className="flex flex-col md:flex-row lg:flex-row gap-1 lg:gap-2 md:items-end lg:items-start">
             <div className="desktop-only">
                 <LyricsDrawer/>
             </div>
             <div className="hidden md:block lg:block">&bull;</div>
-            <p className="text-xs lg:text-sm font-semibold">Album: {song.album}</p>
+            <p className="text-xs lg:text-sm font-semibold">Released:  {data?.track.created_at}</p>
             <div className="hidden md:block lg:block">&bull;</div>
-            <p className="text-xs lg:text-sm font-semibold">Released: {song.release_year}</p>
-            <div className="hidden md:block lg:block">&bull;</div>
-            <p className="text-xs lg:text-sm font-semibold">Genre: {song.genre}</p>
-            <div className="hidden md:block lg:block">&bull;</div>
-            <p className="text-xs lg:text-sm font-semibold">Upload: {song.uploaded_by}</p>
-            <p className="mobile-only text-xs lg:text-sm font-semibold">Views: {song.views}</p>
-            <p className="mobile-only text-xs lg:text-sm font-semibold">Likes: {song.likes}</p>
+            {/*<p className="text-xs lg:text-sm font-semibold">Genre:  {data?.track.viewCount}</p>*/}
+            {/*<div className="hidden md:block lg:block">&bull;</div>*/}
+            <p className="text-xs lg:text-sm font-semibold">Upload: {data?.track.uploader.name}</p>
+            <p className="mobile-only text-xs lg:text-sm font-semibold">Views: {data?.track.viewCount}</p>
+            <p className="mobile-only text-xs lg:text-sm font-semibold">Likes: {data?.track.likeCount}</p>
             <p className="mobile-only text-xs lg:text-sm font-semibold">Comments: {song.comments}</p>
         </div>
     );
