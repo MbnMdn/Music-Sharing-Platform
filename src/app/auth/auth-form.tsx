@@ -1,19 +1,32 @@
-// import {Button} from "@nextui-org/react";
-`use client`
-import React from "react";
-
+"use client"
+import React, {useRef} from "react";
 import {Button} from "@/components/ui/button"
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card"
 import {Input} from "@/components/ui/input"
 import {Label} from "@/components/ui/label"
 import {Tabs, TabsContent, TabsList, TabsTrigger,} from "@/components/ui/tabs"
-import {getCsrfToken} from "next-auth/react";
+import {getCsrfToken, signIn} from "next-auth/react";
 import {cookies} from "next/headers";
+import {GetServerSidePropsContext, InferGetServerSidePropsType} from "next";
 
-export default async function AuthForm() {
-    const cookieStore = cookies()
-    const csrfCookie = cookieStore.get('next-auth.csrf-token')
-    const csrfToken = csrfCookie?.value.split("|")[0]
+type Props = {
+    className?: string,
+    callbackUrl?: string
+}
+
+export default function AuthForm(props : Props) {
+    const username = useRef("");
+    const password = useRef("");
+    const onLogin = async (e : React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        await signIn("credentials", {username: username.current, password: password.current, redirect: true, callbackUrl: props.callbackUrl ?? "http://localhost:3000/dashboard"})
+    }
+
+
+    // const cookieStore = cookies()
+    // const csrfCookie = cookieStore.get('next-auth.csrf-token')
+    // const csrfToken = csrfCookie?.value.split("|")[0]
+    // const csrfTokenNew = await getCsrfToken();
     return (
         <Tabs defaultValue="signin" className="w-[350px] md:w-[400px] justify-around ">
             <TabsList className="grid w-full grid-cols-2 bg-violet-50">
@@ -30,7 +43,7 @@ export default async function AuthForm() {
                             music trends.
                         </CardDescription>
                     </CardHeader>
-                    <form action={"/api/auth/callback/credentials"} method={"POST"}>
+                    <form action={"/api/auth/callback/credentials"} method={"POST"} onSubmit={onLogin}>
                         <CardContent className="space-y-2">
                             {/*<div className="flex flex-col mb-2">*/}
                             {/*    <label className="sr-only" htmlFor="inlineFormInputGroup">Username</label>*/}
@@ -42,16 +55,15 @@ export default async function AuthForm() {
                             {/*               id="inlineFormInputGroup" placeholder="Username"/>*/}
                             {/*    </div>*/}
                             {/*</div>*/}
-                            <input name={"csrfToken"} type={"hidden"} value={csrfToken}/>
 
                             <div className="space-y-1">
                                 <Label htmlFor="name">Username</Label>
-                                <Input id="username" placeholder="Enter your username" name={"username"}/>
+                                <Input id="username" placeholder="Enter your username" name={"username"} onChange={(e) => username.current = e.target.value}/>
                             </div>
                             <div className="space-y-1">
                                 <Label htmlFor="username">Password</Label>
                                 <Input id="password" placeholder="•••••••••" type="password"
-                                       className="text-neutral-500" name={"password"}/>
+                                       className="text-neutral-500" name={"password"}  onChange={(e) => password.current = e.target.value}/>
                             </div>
                         </CardContent>
                         <CardFooter className="justify-around flex-col gap-4">
@@ -115,4 +127,12 @@ export default async function AuthForm() {
             </TabsContent>
         </Tabs>
     );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    return {
+        props: {
+            csrfToken: await getCsrfToken(context),
+        },
+    }
 }

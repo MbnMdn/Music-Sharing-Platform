@@ -6,21 +6,9 @@ import UserStatsHover from "@/app/ui/user/user-stats-hover";
 import {useQuery} from "@apollo/client";
 import {GET_ARTIST} from "@/graphql/queries";
 
-export default function UserCoverImage() {
-
-    const {data, loading, error} = useQuery(GET_ARTIST, {
-        variables: {
-            "artist_id": 1,
-        }
-    });
-
-    console.log(data?.artist.name);
-    console.log(error)
-    console.log(loading)
-
-
+export default function UserCoverImage({artist} : {artist : any}) {
     return (
-        <div className="flex my-6 md:my-10">
+        <div className="flex my-6 ">
             {/* eslint-disable-next-line jsx-a11y/alt-text*/}
             {/*<Image*/}
             {/*    className="w-200 h-80 object-cover rounded-md mr-6 mt-10"*/}
@@ -31,20 +19,10 @@ export default function UserCoverImage() {
             {/*/>*/}
             {/* eslint-disable-next-line @next/next/no-img-element */}
 
-            {/*<div className="">*/}
-            {/*    <img src={SingerPic.src} width="100%" alt={SingerPic.src}*/}
-            {/*         className="w-screen rounded-none"/>*/}
-            {/*    <div className="flex relative top-[-25%] left-10 gap-3">*/}
-            {/*        <p className="text-5xl lg:text-6xl text-white font-bold  ">Taylor Swift</p>*/}
-            {/*        <div className="self-center">*/}
-            {/*            <UserStatsHover/>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-
             <div className="relative ">
-                <img src={SingerPic.src} width="100%" alt={SingerPic.src} className="w-screen rounded-none"/>
-                <p className="absolute bottom-[10%] left-[5%] text-5xl lg:text-6xl text-white font-bold flex items-center gap-2">{loading ? "loading" : data?.artist.name}<UserStatsHover/></p>
+                <img src={artist?.header_image} width="100%" alt={artist?.name} className="w-screen rounded-lg"/>
+                <p className="absolute bottom-[10%] left-[5%] text-5xl lg:text-6xl text-white font-bold flex items-center gap-2">{artist?.name}</p>
+                {/*<UserStatsHover artist={artist}/>*/}
             </div>
         </div>
     );

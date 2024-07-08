@@ -1,9 +1,23 @@
 import {NextAuthOptions} from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials'
+import {getClient} from "@/lib/apollo";
+import {LOGIN} from "@/graphql/mutations";
+import {ApolloError} from "@apollo/client";
+import {cookies} from "next/headers";
 
 export const options: NextAuthOptions = {
     pages: {
-        signIn: "/register",
+        signIn: "/auth",
+        error: "/auth"
+    },
+    callbacks: {
+        async jwt({token, user}) {
+            return {...token, ...user}
+        },
+        async session({session, token}) {
+            session.user = token as any;
+            return session;
+        },
     },
     providers: [
         CredentialsProvider({
@@ -20,9 +34,25 @@ export const options: NextAuthOptions = {
                     placeholder: "pass",
                 },
             },
-            async authorize(credentials){
-                console.log(credentials?.username + " " + credentials?.password);
-                return {id: "42"};
+            async authorize(credentials) {
+                const userName = credentials?.username;
+                const password = credentials?.password;
+
+                const client = getClient();
+                try {
+                    const {data} = await client.mutate({
+                        mutation: LOGIN,
+                        variables: {
+                            username: userName,
+                            password: password
+                        }
+                    });
+                    cookies().set("access_token",data?.login.access_token);
+                    return data?.login;
+                }catch (error){
+                    throw new Error((error as ApolloError).graphQLErrors[0].extensions.reason as string)
+                }
+
             }
         })
 

@@ -2,8 +2,8 @@ import {HoverCard, HoverCardContent, HoverCardTrigger} from "@/components/ui/hov
 import {FiInfo} from "react-icons/fi";
 import React from "react";
 
-export default function UserStatsHover(){
-    return(
+export default function UserStatsHover({artist}: { artist: any }) {
+    return (
         <HoverCard>
             <HoverCardTrigger asChild>
                 <FiInfo className="block" size={20}/>
@@ -13,7 +13,7 @@ export default function UserStatsHover(){
                     <div className="space-y-1">
                         <h4 className="text-sm font-semibold">User statistics:</h4>
                         <p className="text-sm">
-                            Total listeners: 1324567
+                            Total likes: {artist?.like_count}
                         </p>
                         <p className="text-sm">
                             Total views: 1324567

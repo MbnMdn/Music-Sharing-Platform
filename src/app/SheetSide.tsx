@@ -1,3 +1,4 @@
+"use client"
 import {
     Sheet,
     SheetContent,
@@ -10,8 +11,10 @@ import {
 import {PiNotificationBold} from "react-icons/pi";
 import React from "react";
 import {TbNotification} from "react-icons/tb";
+import {useSession} from "next-auth/react";
 
 export function SheetSide() {
+    const {data, update, status} = useSession()
     return (
         <Sheet>
             <SheetTrigger asChild>
@@ -23,7 +26,8 @@ export function SheetSide() {
                                  alt="alt"/>
                         </div>
                         <div className="flex flex-col content-center">
-                            <p className="text-md flex gap-2">mbina
+                            <p className="text-md flex gap-2">
+                                {status == "authenticated" ? data?.user.user.name : "Login"}
 
                                 {/*<TbNotification className="self-center"/>*/}
 

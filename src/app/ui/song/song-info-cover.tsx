@@ -34,10 +34,7 @@ export default function SongInfoCover({id}: { id: number }) {
         }
     });
 
-
-
     console.log(error)
-    console.log(loading)
 
     return (
         <div>
@@ -117,7 +114,7 @@ export default function SongInfoCover({id}: { id: number }) {
 //     id: 1,
 //     cover: { MusicPic },
 //     name: 'Mockingbird',
-//     singer: 'Eminem',
+//     artist: 'Eminem',
 //     album: 'blah',
 //     lyrics: 'hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor',
 //     release_year: '2002',
@@ -183,7 +180,7 @@ export default function SongInfoCover({id}: { id: number }) {
 //                                                 </div>
 //                                                 <div className="mb-5">
 //                                                     <p className=" text-3xl lg:text-5xl font-bold">{song.name}</p>
-//                                                     <p className="text-2xl lg:text-3xl font-bold">{song.singer}</p>
+//                                                     <p className="text-2xl lg:text-3xl font-bold">{song.artist}</p>
 //                                                 </div>
 //                                             </div>
 //                                         </div>

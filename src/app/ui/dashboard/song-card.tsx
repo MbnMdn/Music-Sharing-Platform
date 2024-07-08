@@ -1,6 +1,7 @@
-import {Image} from "@nextui-org/react";
+import Image from 'next/image'
 import MusicPic from "./assets/music-pic.jpg";
 import React from "react";
+
 
 export default function SongCard({song}: { song: any }) {
     return (
@@ -8,11 +9,9 @@ export default function SongCard({song}: { song: any }) {
             <div className="zoom rounded-md">
                 <Image
                     alt={song.title}
-                    isZoomed
-                    shadow="sm"
-                    radius="lg"
-                    width="100%"
-                    className="w-full object-cover min-h-[150px] min-w-[150px] rounded-md"
+                    width={500}
+                    height={500}
+                    className="w-full object-cover min-h-[160px] min-w-[160px] rounded-md"
                     src={song.cover}
                 />
             </div>

@@ -10,10 +10,10 @@ import {usePathname} from 'next/navigation';
 
 const links = [
     {name: 'Home', href: '/dashboard', icon: FiHome},
-    {name: 'Profile', href: '/user', icon: HiOutlineUser,},
+    {name: 'Profile', href: '/artist', icon: HiOutlineUser,},
     // {name: 'Favorites', href: '/dashboard/customers', icon: RiHeart3Line},
     // {name: 'Upload', href: '', icon: TbUpload},
-    {name: 'Log Out', href: '/register', icon: TbLogout},
+    {name: 'Log Out', href: '/auth', icon: TbLogout},
 ];
 
 export default function NavLinks() {

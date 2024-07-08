@@ -8,8 +8,6 @@ export default function Page({params}: { params: { id: number } }) {
     console.log(params.id)
     return (
         <div>
-            <p>{params.id}</p>
-
             <SongInfoCover id={params.id}/>
             <CommentsSection/>
         </div>

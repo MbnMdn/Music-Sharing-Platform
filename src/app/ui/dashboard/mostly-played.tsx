@@ -1,8 +1,16 @@
 import React from 'react';
 import MusicPic from './assets/music-pic.jpg'
 import {IoIosArrowForward} from "react-icons/io";
+import {useQuery} from "@apollo/client";
+import {GET_ARTIST, GET_MOSTLY_PLAYED} from "@/graphql/queries";
 
 export default function MostlyPlayed() {
+
+    // const {data, loading, error} = useQuery(GET_MOSTLY_PLAYED, {
+    //     variables: {
+    //         "artist_id": params.id,
+    //     }
+    // });
 
     const bands = [
         {

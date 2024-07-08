@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.10.8",
+    "@apollo/experimental-nextjs-app-support": "^0.11.2",
     "@next/font": "^14.2.4",
     "@nextui-org/breadcrumbs": "^2.0.10",
     "@nextui-org/card": "^2.0.31",

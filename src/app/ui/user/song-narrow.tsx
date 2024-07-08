@@ -1,24 +1,47 @@
 'use client'
 
 import React from 'react';
-import MusicPic from '../dashboard/assets/music-pic.jpg'
 import {EditIcon} from "@nextui-org/shared-icons";
 import {motion} from "framer-motion"
 import HeartIcon from "@/app/ui/icons/heart-icon";
 import EyeIcon from "@/app/ui/icons/eye-icon";
 import clsx from 'clsx';
+import { FaPlay } from "react-icons/fa";
+
+// const songNarrow = {
+//     id: 1,
+//     singerName: 'Taylor Swift',
+//     name: 'Cruel Summer',
+//     plays: '111,340',
+//     duration: '3:48',
+//     likes: '345',
+//     // image: {MusicPic},
+// };
 
 
-const songNarrow = {
-    id: 1,
-    singerName: 'Taylor Swift',
-    name: 'Cruel Summer',
-    plays: '111,340',
-    duration: '3:48',
-    likes: '345',
-    // image: {MusicPic},
+type SongNarrowProps = {
+    song: any,
+    edit?: number,
+    singer?: number,
+    view?: number,
+    time?: number,
+    like?: number,
+    divider?: number,
+    hover?: number,
+    index?: number
 };
-export default function SongNarrow({edit = 1, singer = 1, view = 0, time = 1, like = 0, divider = 0, hover = 0}) {
+
+export default function SongNarrow({
+                                       song,
+                                       edit = 1,
+                                       singer = 1,
+                                       view = 0,
+                                       time = 1,
+                                       like = 0,
+                                       divider = 0,
+                                       hover = 0,
+                                       index = 0
+                                   }: SongNarrowProps) {
     const [hovered, setHovered] = React.useState(false);
 
     return (
@@ -34,7 +57,11 @@ export default function SongNarrow({edit = 1, singer = 1, view = 0, time = 1, li
                 onMouseEnter={() => setHovered((v) => true)}
                 onMouseLeave={() => setHovered((v) => false)}>
                 <div className="flex items-center w-full  p-0 py-4 md:p-4">
-                    <div className="text-lg font-bold mr-2 md:mr-6">{String(songNarrow.id).padStart(2, '0')}</div>
+                    {/*<div className="text-lg font-bold mr-2 md:mr-6">{String(songNarrow.id).padStart(2, '0')}</div>*/}
+                    <div className="text-lg font-bold mr-2 md:mr-6">{hovered ? <FaPlay className="mr-2  p-0 self-center" size={14}/> : String(index + 1).padStart(2, '0')}</div>
+
+                    {/*<div className="text-lg font-bold mr-2 md:mr-6">{song.rank}</div>*/}
+
                     {/*<Image*/}
                     {/*    alt={songNarrow.name}*/}
                     {/*    className="w-12 h-12 rounded-md mr-2 md:mr-6"*/}
@@ -42,11 +69,11 @@ export default function SongNarrow({edit = 1, singer = 1, view = 0, time = 1, li
                     {/*    width="100%"*/}
                     {/*    height="100%"*/}
                     {/*/>*/}
-                    <img src={MusicPic.src} alt={songNarrow.name} className="w-12 h-12 rounded-md mr-2 md:mr-6"/>
+                    <img src={song?.cover} alt={song?.title} className="w-12 h-12 rounded-md mr-2 md:mr-6"/>
                     <div className="flex-grow">
-                        <div className="text-lg font-semibold">{songNarrow.name}</div>
+                        <div className="text-lg font-semibold">{song?.title}</div>
                         {singer === 1 && (
-                            <span className="flex items-center ">{songNarrow.singerName}</span>)}
+                            <span className="flex items-center ">{song?.artist.name}</span>)}
                     </div>
                     <div className=" flex items-center space-x-5 md:space-x-10 lg:space-x-12">
                         {/*{(view === 1 || hovered) && (*/}
@@ -59,18 +86,18 @@ export default function SongNarrow({edit = 1, singer = 1, view = 0, time = 1, li
                         {/*>{songNarrow.plays}<EyeIcon/></motion.span>*/}
 
                         {(view === 1 || hovered) &&
-                            <span className="desktop-only flex items-center gap-1">{songNarrow.plays}
+                            <span className="desktop-only flex items-center gap-1">{song.viewCount}
                                 <EyeIcon/>
                             </span>}
 
                         {(like === 1 || hovered) && (
                             <span
-                                className="desktop-only flex items-center gap-0.5 transition delay-150">{songNarrow.likes}
+                                className="desktop-only flex items-center gap-0.5 transition delay-150">{song.likeCount}
                                 <HeartIcon/>
                             </span>)}
                         {time === 1 && (
                             <span
-                                className="flex items-center gap-1">{songNarrow.duration}</span>)}
+                                className="flex items-center gap-1">{formatDuration(song.duration)}</span>)}
                         {edit === 1 && (<span className="flex items-center gap-0.5"><EditIcon/></span>)}
                     </div>
                 </div>
@@ -101,6 +128,13 @@ export const MyComponent = () => (
         whileTap={{scale: 0.9}}
     />
 )
+
+
+const formatDuration = (duration: number) => {
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+};
 
 
 //<motion.div
@@ -137,7 +171,7 @@ export const MyComponent = () => (
 //                     />
 //                     <div className="flex-grow">
 //                         <div className="text-lg font-semibold">{songNarrow.name}</div>
-//                         {singer === 1 && (
+//                         {artist === 1 && (
 //                             <span className="flex items-center gap-1">{songNarrow.singerName}</span>)}
 //                     </div>
 //                     <div className="flex items-center space-x-20">

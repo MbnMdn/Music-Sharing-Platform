@@ -1,12 +1,13 @@
 'use client'
 
 import React from 'react';
-import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
+import {SessionProvider, useSession} from "next-auth/react";
+import {setContext} from "@apollo/client/link/context";
+import {ApolloWrapper} from "@/lib/apollo-wrapper";
 
 export const Providers = ({children}: { children: React.ReactNode }) => {
-    const client = new ApolloClient({
-        uri: 'http://192.168.158.179:8000/graphql',
-        cache: new InMemoryCache(),
-    });
-    return <ApolloProvider client={client}>{children}</ApolloProvider>
+
+    return <SessionProvider>
+        <ApolloWrapper>{children}</ApolloWrapper>
+    </SessionProvider>
 }
