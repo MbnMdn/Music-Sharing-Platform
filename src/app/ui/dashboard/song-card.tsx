@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import MusicPic from "./assets/music-pic.jpg";
 import React from "react";
+import {removeFeat} from "@/app/utilities/remove-feat"
 
 
 export default function SongCard({song}: { song: any }) {
@@ -18,7 +19,7 @@ export default function SongCard({song}: { song: any }) {
 
             <div className="flex justify-between">
                 <div className="p-1">
-                    <h2 className="text-gray-100 text-lg font-bold ">{song.title}</h2>
+                    <h2 className="text-gray-100 text-lg font-bold ">{removeFeat(song.title)}</h2>
                     <p className="text-gray-400 text-sm">{song.artist.name}</p>
                 </div>
             </div>

@@ -61,6 +61,19 @@ export const GET_SONG = gql`
                 name
                 picture
             }
+            comments {
+                body
+                created_at
+                id
+                track_id
+                user {
+                    avatar
+                    email
+                    id
+                    name
+                }
+                user_id
+            }
             cover
             created_at
             duration
@@ -88,6 +101,7 @@ export const GET_SONG = gql`
 export const GET_RECENTLY_PLAYED = gql`
     query GetRecentlyPlayed {
         getRecentlyViewedSongs {
+            id
             cover
             duration
             file_link

@@ -21,7 +21,7 @@ export default function Page() {
         <>
             <TrendingCoverImage/>
             {data?.trendingTracks.map((song: any, index: any) => (
-                <SongNarrow edit={0} hover={1} song={song} key={song.id}/>
+                <SongNarrow edit={0} hover={1} song={song} key={song.id} song_id={song.id}/>
             ))}
         </>
     );

@@ -1,12 +1,16 @@
 'use client'
 
-import React from 'react';
+import React, {useState} from 'react';
 import {EditIcon} from "@nextui-org/shared-icons";
 import {motion} from "framer-motion"
 import HeartIcon from "@/app/ui/icons/heart-icon";
 import EyeIcon from "@/app/ui/icons/eye-icon";
 import clsx from 'clsx';
-import { FaPlay } from "react-icons/fa";
+import {usePlayerContext} from "@/context/glass-player-provider";
+import {useLazyQuery} from "@apollo/client";
+import {GET_SONG} from "@/graphql/queries";
+import {FaPlay} from "react-icons/fa";
+
 
 // const songNarrow = {
 //     id: 1,
@@ -21,6 +25,7 @@ import { FaPlay } from "react-icons/fa";
 
 type SongNarrowProps = {
     song: any,
+    song_id: number,
     edit?: number,
     singer?: number,
     view?: number,
@@ -33,6 +38,7 @@ type SongNarrowProps = {
 
 export default function SongNarrow({
                                        song,
+                                       song_id,
                                        edit = 1,
                                        singer = 1,
                                        view = 0,
@@ -42,7 +48,12 @@ export default function SongNarrow({
                                        hover = 0,
                                        index = 0
                                    }: SongNarrowProps) {
-    const [hovered, setHovered] = React.useState(false);
+    const [hovered, setHovered] = useState(false);
+    const [getSong, {loading, data}] = useLazyQuery(GET_SONG);
+
+    // @ts-ignore
+    const [providerTrackId, setNewTrack, isPlaying, setIsPlaying] = usePlayerContext();
+
 
     return (
         <div>
@@ -55,10 +66,20 @@ export default function SongNarrow({
                 )}
 
                 onMouseEnter={() => setHovered((v) => true)}
-                onMouseLeave={() => setHovered((v) => false)}>
+                onMouseLeave={() => setHovered((v) => false)}
+            >
                 <div className="flex items-center w-full  p-0 py-4 md:p-4">
                     {/*<div className="text-lg font-bold mr-2 md:mr-6">{String(songNarrow.id).padStart(2, '0')}</div>*/}
-                    <div className="text-lg font-bold mr-2 md:mr-6">{hovered ? <FaPlay className="mr-2  p-0 self-center" size={14}/> : String(index + 1).padStart(2, '0')}</div>
+                    <div className="text-lg font-bold mr-2 md:mr-6">
+                        <button onClick={() => getSong({
+                            variables: {song_id: song_id}, onCompleted: (data) => {
+                                setNewTrack(data.track)
+                            }
+                        })}>{hovered ? <FaPlay className="mr-2  p-0 self-center"
+                                               size={14}/> : String(index + 1).padStart(2, '0')}
+                        </button>
+                    </div>
+
 
                     {/*<div className="text-lg font-bold mr-2 md:mr-6">{song.rank}</div>*/}
 

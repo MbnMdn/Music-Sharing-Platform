@@ -4,6 +4,7 @@ import "./globals.css";
 import {Londrina_Outline} from '@next/font/google';
 import React from "react";
 import {Providers} from "@/components/Providers";
+import {GlassPlayerProvider} from "@/context/glass-player-provider";
 
 
 const inter = Inter({subsets: ["latin"]});
@@ -28,7 +29,11 @@ export default function RootLayout({
         // <html lang="en" data-theme="dark">
         <html lang="en">
         <body className={`bg-neutral-900 text-gray-100 ${inter.className}`}>
-        <Providers>{children}</Providers>
+        <Providers>
+            <GlassPlayerProvider>
+                {children}
+            </GlassPlayerProvider>
+        </Providers>
         </body>
         </html>
     );

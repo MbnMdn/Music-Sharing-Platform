@@ -20,7 +20,7 @@ export default function RecentlyPlayedSection(){
             <h1 className="text-4xl font-bold mb-11">Recently Played</h1>
             <div className="h-96 overflow-y-auto scrollbar-hide">
                 {data?.getRecentlyViewedSongs.map((song: any, index: number) => (
-                    <SongNarrow edit={0} hover={1} song={song} key={song.id} index={index}/>
+                    <SongNarrow edit={0} song={song} key={song.id} index={index} song_id={song.id}/>
                 ))}
             </div>
         </div>

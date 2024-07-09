@@ -11,10 +11,15 @@ import {Session} from "next-auth";
 // have a function to create a client for you
 
 export const getClientSideCookie = (name: string): string | undefined => {
-    return document.cookie
-        .split('; ')
-        .find((row) => row.startsWith(`${name}=`))
-        ?.split('=')[1];
+    if(typeof document !== 'undefined'){
+        return document.cookie
+            .split('; ')
+            .find((row) => row.startsWith(`${name}=`))
+            ?.split('=')[1];
+    }
+
+    return undefined;
+
 };
 function makeClient(session : string | undefined) {
 
@@ -28,7 +33,7 @@ function makeClient(session : string | undefined) {
     });
     const httpLink = new HttpLink({
         // this needs to be an absolute url, as relative urls cannot be used in SSR
-        uri: 'http://localhost:8000/graphql',
+        uri: 'http://192.168.158.179:8000/graphql',
         // you can disable result caching here if you want to
         // (this does not work if you are rendering your page with `export const dynamic = "force-static"`)
         // you can override the default `fetchOptions` on a per query basis

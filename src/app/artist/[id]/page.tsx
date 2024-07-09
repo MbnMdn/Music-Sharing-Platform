@@ -21,7 +21,7 @@ export default function Page({params}: { params: { id: number } }) {
             <UserCoverImage artist={data?.artist}/>
             {/*<UploadDrawer/>*/}
             {data?.artist.tracks.map((song: any, index: number) => (
-                <SongNarrow edit={0} hover={1} song={song} key={song.name} index={index}/>
+                <SongNarrow edit={0} song={song} key={song.name} index={index} song_id={song.id}/>
             ))}
         </div>
     );
