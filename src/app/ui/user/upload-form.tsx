@@ -19,10 +19,27 @@ import {Label} from "@/components/ui/label"
 // import {useMediaQuery} from "@react-hook/media-query";
 import {Textarea} from "@/components/ui/textarea"
 import {IoIosAddCircleOutline} from "react-icons/io";
+import {useRef} from "react";
+import {readFile} from "node:fs";
+import {useMutation} from "@apollo/client";
+import {UPLOAD_SONG} from "@/graphql/mutations";
 
 
 export function UploadDrawer() {
     const [open, setOpen] = React.useState(false)
+
+    const [uploadSong, {data, loading, error}] = useMutation(UPLOAD_SONG);
+
+    const name = useRef<string>("");
+    const singer = useRef<string>("");
+    const duration = useRef<string>("");
+    const genre = useRef<string>("");
+    const lyrics =useRef<string>("");
+
+    const cover = useRef<any>(null);
+    const songFile = useRef<any>(null);
+
+
     // const isDesktop = useMediaQuery("(min-width: 768px)")
 
     // if (isDesktop) {
@@ -60,71 +77,159 @@ export function UploadDrawer() {
 
                     </DrawerDescription>
                 </DrawerHeader>
-                <UploadForm className="px-4"/>
+                {/*upload form:*/}
+                <div className="px-4">
+                    <form className={cn("grid items-start gap-0 w-4/5 md:w-5/6 lg:w-2/3 overflow-y-auto")}>
+
+                        <div className="flex flex-col md:flex-row justify-between mb-0 md:mb-3">
+                            <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
+                                <Label htmlFor="name">Name</Label>
+                                <Input className="bg-neutral-800" type="text" id="name"
+                                       placeholder="What is the name of this song?"
+                                       onChange={(e) => name.current = e.target.value}
+                                />
+                            </div>
+                            <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
+                                <Label htmlFor="singer">Singer</Label>
+                                <Input className="bg-neutral-800" type="text" id="singer"
+                                       placeholder="Who is the singer of this song?"
+                                       onChange={(e) => singer.current = e.target.value}
+                                />
+                            </div>
+                        </div>
+
+
+                        <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
+
+                            <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
+                                <Label htmlFor="year">duration</Label>
+                                <Input className="bg-neutral-800" type="number" id="year"
+                                       placeholder="How long is the track?"
+                                       onChange={(e) => duration.current = e.target.value}
+
+                                />
+                            </div>
+
+                            <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
+                                <Label htmlFor="genre">Genre</Label>
+                                <Input className="bg-neutral-800" type="text" id="genre"
+                                       placeholder="What is the genre of this song?"
+                                       onChange={(e) => genre.current = e.target.value}
+                                />
+                            </div>
+                        </div>
+
+
+                        <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
+
+                            <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
+                                <Label htmlFor="genre">Cover image</Label>
+                                <Input className="bg-neutral-800" id="cover" type="file" accept="image/*"
+                                       ref={cover}
+                                />
+                            </div>
+
+
+                            <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
+                                <Label htmlFor="genre">Song file</Label>
+                                <Input className="bg-neutral-800" id="cover" type="file" ref={songFile}/>
+                            </div>
+                        </div>
+
+
+                        <div className="grid gap-2 mb-3">
+                            <Label htmlFor="lyrics">Lyrics</Label>
+                            <Textarea placeholder="Enter the lyrics"/>
+                        </div>
+                    </form>
+                </div>
+                {/*<UploadForm className="px-4"/>*/}
                 <div className="flex gap-10">
-                    <Button type="submit" variant="outline" className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5">Upload</Button>
+                    <Button type="submit" variant="outline"
+                            className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5"
+                        onClick={() => uploadSong({
+                            variables:{
+                                title: name.current,
+                                duration: 10,
+                                rank: 1,
+                                artist_id: 4,
+                                cover: cover.current.files[0],
+                                file: songFile.current.files[0]
+                            },
+                        })}
+                    >Upload</Button>
                     <DrawerClose asChild>
-                        <Button variant="outline" className="block bg-transparent hover:bg-neutral-700 hover:text-white my-5">Cancel</Button>
+                        <Button variant="outline"
+                                className="block bg-transparent hover:bg-neutral-700 hover:text-white my-5">Cancel</Button>
                     </DrawerClose>
                 </div>
 
             </DrawerContent>
         </Drawer>
     )
+
 }
 
-function UploadForm({className}: React.ComponentProps<"form">) {
-    return (
-        <form className={cn("grid items-start gap-0 w-4/5 md:w-5/6 lg:w-2/3 overflow-y-auto", className)}>
-
-            <div className="flex flex-col md:flex-row justify-between mb-0 md:mb-3">
-                <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
-                    <Label htmlFor="name">Name</Label>
-                    <Input className="bg-neutral-800" type="text" id="name"
-                           placeholder="What is the name of this song?"/>
-                </div>
-                <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
-                    <Label htmlFor="singer">Singer</Label>
-                    <Input className="bg-neutral-800" type="text" id="singer"
-                           placeholder="Who is the singer of this song?"/>
-                </div>
-            </div>
-
-
-            <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
-                <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
-                    <Label htmlFor="album">Album</Label>
-                    <Input className="bg-neutral-800" type="text" id="album"
-                           placeholder="What album does this song belong to?"/>
-                </div>
-                <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
-                    <Label htmlFor="year">Release year</Label>
-                    <Input className="bg-neutral-800" type="number" id="year"
-                           placeholder="What year was this song released?"/>
-                </div>
-            </div>
-
-
-            <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
-                <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
-                    <Label htmlFor="genre">Genre</Label>
-                    <Input className="bg-neutral-800" type="text" id="genre"
-                           placeholder="What is the genre of this song?"/>
-                </div>
-                <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
-                    <Label htmlFor="genre">Cover image</Label>
-                    <Input className="bg-neutral-800" id="cover" type="file"/>
-                </div>
-            </div>
-
-
-            <div className="grid gap-2 mb-3">
-                <Label htmlFor="lyrics">Lyrics</Label>
-                <Textarea placeholder="Enter the lyrics"/>
-            </div>
-        </form>
-    )
-}
+//
+// function UploadForm({className}: React.ComponentProps<"form">) {
+//     return (
+//         <form className={cn("grid items-start gap-0 w-4/5 md:w-5/6 lg:w-2/3 overflow-y-auto", className)}>
+//
+//             <div className="flex flex-col md:flex-row justify-between mb-0 md:mb-3">
+//                 <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
+//                     <Label htmlFor="name">Name</Label>
+//                     <Input className="bg-neutral-800" type="text" id="name"
+//                            placeholder="What is the name of this song?"
+//                            onChange={(e) => name.current = e.target.value}
+//                     />
+//                 </div>
+//                 <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
+//                     <Label htmlFor="singer">Singer</Label>
+//                     <Input className="bg-neutral-800" type="text" id="singer"
+//                            placeholder="Who is the singer of this song?"/>
+//                 </div>
+//             </div>
+//
+//
+//             <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
+//
+//                 <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
+//                     <Label htmlFor="year">Release year</Label>
+//                     <Input className="bg-neutral-800" type="number" id="year"
+//                            placeholder="What year was this song released?"/>
+//                 </div>
+//
+//                 <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
+//                     <Label htmlFor="genre">Genre</Label>
+//                     <Input className="bg-neutral-800" type="text" id="genre"
+//                            placeholder="What is the genre of this song?"/>
+//                 </div>
+//
+//             </div>
+//
+//
+//             <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
+//
+//                 <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
+//                     <Label htmlFor="genre">Cover image</Label>
+//                     <Input  className="bg-neutral-800" id="cover" type="file"/>
+//                 </div>
+//
+//
+//                 <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
+//                     <Label htmlFor="genre">Song file</Label>
+//                     <Input className="bg-neutral-800" id="cover" type="file"/>
+//                 </div>
+//             </div>
+//
+//
+//             <div className="grid gap-2 mb-3">
+//                 <Label htmlFor="lyrics">Lyrics</Label>
+//                 <Textarea placeholder="Enter the lyrics"/>
+//             </div>
+//         </form>
+//     )
+// }
 
 
 

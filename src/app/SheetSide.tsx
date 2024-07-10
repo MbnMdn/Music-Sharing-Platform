@@ -18,7 +18,7 @@ export function SheetSide() {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <div className="flex w-full">
+                <div className="flex w-full ml-5 ">
                     <div className=" flex w-full avatar  space-x-2">
                         {/*<SheetSide/>*/}
                         <div className="w-14 h-14 rounded-xl">

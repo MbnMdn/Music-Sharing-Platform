@@ -1,5 +1,6 @@
 import SingerPic from "@/app/ui/dashboard/assets/singer.png";
 import React from "react";
+import {getMediaPath} from "@/app/utilities/getMediaPath";
 
 export default function TrendingCoverImage() {
     return (

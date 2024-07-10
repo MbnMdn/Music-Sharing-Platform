@@ -10,17 +10,9 @@ import {usePlayerContext} from "@/context/glass-player-provider";
 import {useLazyQuery} from "@apollo/client";
 import {GET_SONG} from "@/graphql/queries";
 import {FaPlay} from "react-icons/fa";
-
-
-// const songNarrow = {
-//     id: 1,
-//     singerName: 'Taylor Swift',
-//     name: 'Cruel Summer',
-//     plays: '111,340',
-//     duration: '3:48',
-//     likes: '345',
-//     // image: {MusicPic},
-// };
+import Link from "next/link";
+import SingerCard from "@/app/ui/artists/singer-card";
+import {getMediaPath} from "@/app/utilities/getMediaPath";
 
 
 type SongNarrowProps = {
@@ -53,7 +45,6 @@ export default function SongNarrow({
 
     // @ts-ignore
     const [providerTrackId, setNewTrack, isPlaying, setIsPlaying] = usePlayerContext();
-
 
     return (
         <div>
@@ -90,11 +81,28 @@ export default function SongNarrow({
                     {/*    width="100%"*/}
                     {/*    height="100%"*/}
                     {/*/>*/}
-                    <img src={song?.cover} alt={song?.title} className="w-12 h-12 rounded-md mr-2 md:mr-6"/>
+                    <img src={getMediaPath(song?.cover)} alt={song?.title} className="w-12 h-12 rounded-md mr-2 md:mr-6"/>
                     <div className="flex-grow">
-                        <div className="text-lg font-semibold">{song?.title}</div>
+                        <div className="text-lg font-semibold">
+                            <Link href={{
+                                pathname: `song/${song.id}`,
+                            }}>
+                                {song?.title}
+                            </Link>
+
+                        </div>
                         {singer === 1 && (
-                            <span className="flex items-center ">{song?.artist.name}</span>)}
+                            <Link
+                                href={{
+                                    pathname: `artist/${song?.artist.id}`,
+                                }}
+                                key={song?.artist.id}
+                            >
+                                <span className="flex items-center ">{song?.artist.name}</span>
+                            </Link>
+                            )}
+
+
                     </div>
                     <div className=" flex items-center space-x-5 md:space-x-10 lg:space-x-12">
                         {/*{(view === 1 || hovered) && (*/}

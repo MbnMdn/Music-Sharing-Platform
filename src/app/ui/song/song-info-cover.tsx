@@ -7,6 +7,8 @@ import {useMediaQuery} from "@react-hook/media-query";
 import SongDetails from "@/app/ui/song/song-details";
 import {useQuery} from "@apollo/client";
 import {GET_SONG, GET_TRENDING} from "@/graphql/queries";
+import {getMediaPath} from "@/app/utilities/getMediaPath";
+
 
 
 const song = {
@@ -31,10 +33,12 @@ export default function SongInfoCover({id}: { id: number }) {
     const {data, loading, error} = useQuery(GET_SONG, {
         variables: {
             "song_id": id,
-        }
+        },
     });
 
-    console.log(error)
+
+    const substring = "http";
+
 
     return (
         <div>
@@ -52,12 +56,31 @@ export default function SongInfoCover({id}: { id: number }) {
 
                                         {/*Desktop ------------------------------------------------------*/}
                                         <div className="desktop-only flex flex-col md:flex-row">
+                                            {/*{(data?.track.cover.includes("http")) ? <Image*/}
+                                            {/*    alt={data?.track.title}*/}
+                                            {/*    height={500}*/}
+                                            {/*    width={500}*/}
+                                            {/*    className="w-44 h-44 lg:w-60 lg:h-60 rounded-md self-center"*/}
+                                            {/*    src={data?.track.cover}*/}
+                                            {/*    priority={true}*/}
+                                            {/*/> :*/}
+                                            {/*    <Image*/}
+                                            {/*        alt={data?.track.title}*/}
+                                            {/*        height={500}*/}
+                                            {/*        width={500}*/}
+                                            {/*        className="w-44 h-44 lg:w-60 lg:h-60 rounded-md self-center"*/}
+                                            {/*        src={'http://192.168.158.179:8000/storage/' + data?.track.cover}*/}
+                                            {/*        priority={true}*/}
+                                            {/*    />*/}
+                                            {/*}*/}
+
+
                                             <Image
                                                 alt={data?.track.title}
                                                 height={500}
                                                 width={500}
                                                 className="w-44 h-44 lg:w-60 lg:h-60 rounded-md self-center"
-                                                src={data?.track.cover}
+                                                src={getMediaPath(data?.track.cover)}
                                                 priority={true}
                                             />
 

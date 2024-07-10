@@ -22,7 +22,7 @@ export default function UserCoverImage({artist} : {artist : any}) {
             <div className="relative ">
                 <img src={artist?.header_image} width="100%" alt={artist?.name} className="w-screen rounded-lg"/>
                 <p className="absolute bottom-[10%] left-[5%] text-5xl lg:text-6xl text-white font-bold flex items-center gap-2">{artist?.name}</p>
-                {/*<UserStatsHover artist={artist}/>*/}
+                <UserStatsHover artist={artist}/>
             </div>
         </div>
     );

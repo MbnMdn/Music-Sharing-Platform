@@ -2,6 +2,7 @@ import Image from 'next/image'
 import MusicPic from "./assets/music-pic.jpg";
 import React from "react";
 import {removeFeat} from "@/app/utilities/remove-feat"
+import {getMediaPath} from "@/app/utilities/getMediaPath";
 
 
 export default function SongCard({song}: { song: any }) {
@@ -13,7 +14,7 @@ export default function SongCard({song}: { song: any }) {
                     width={500}
                     height={500}
                     className="w-full object-cover min-h-[160px] min-w-[160px] rounded-md"
-                    src={song.cover}
+                    src={getMediaPath(song.cover)}
                 />
             </div>
 

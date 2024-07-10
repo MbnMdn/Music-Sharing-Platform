@@ -12,6 +12,7 @@ import {GET_SONG} from "@/graphql/queries";
 import AverageColorSpan from "@/app/ui/dashboard/average-color-span";
 import {removeFeat} from "@/app/utilities/remove-feat";
 import {usePlayerContext} from "@/context/glass-player-provider";
+import {getMediaPath} from "@/app/utilities/getMediaPath";
 
 
 type SliderProps = React.ComponentProps<typeof Slider>;
@@ -76,6 +77,7 @@ export default function GlassPlayer() {
         setMusicCurrentTime(musicCurrentT);
     };
 
+    // @ts-ignore
     const handleSeek = (event) => {
         // @ts-ignore
         const newTime = (event.target.value / 100) * audioRef.current.duration;
@@ -160,7 +162,7 @@ export default function GlassPlayer() {
                     setIsPlaying(true);
                 }
                 }
-                src={providerTrackId?.file_link}
+                src={getMediaPath(providerTrackId?.file_link)}
                 onEnded={nextTrack}
             />
             <div className="relative card w-full max-h-96 glass hover:bg-base-100/5">
@@ -172,7 +174,7 @@ export default function GlassPlayer() {
                             className="object-cover items-center rounded-md"
                             height="100%"
                             shadow="md"
-                            src={providerTrackId?.cover}
+                            src={getMediaPath(providerTrackId?.cover)}
                             width="100%"
                         />
                     </div>

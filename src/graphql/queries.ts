@@ -10,6 +10,7 @@ export const GET_ARTIST = gql`
             picture
             header_image
             tracks {
+                id
                 cover
                 created_at
                 duration
@@ -26,6 +27,47 @@ export const GET_ARTIST = gql`
     }
 `;
 
+
+
+
+export const GET_USER = gql`
+    query GetUser ($user_id: ID!){
+        user(id: $user_id) {
+            avatar
+            created_at
+            email
+            email_verified_at
+            id
+            name
+            role_id
+            tracks {
+                cover
+                duration
+                file_link
+                id
+                likeCount
+                rank
+                title
+                created_at
+                artist {
+                    name
+                    id
+                }
+            }
+        }
+    }
+`;
+
+
+
+
+
+
+
+
+
+
+
 export const GET_TRENDING = gql`
     query GetTrendingSongs($limit: Int!) {
         trendingTracks(limit: $limit) {
@@ -33,6 +75,7 @@ export const GET_TRENDING = gql`
             title
             id
             artist {
+                id
                 name
             }
             duration
@@ -110,6 +153,7 @@ export const GET_RECENTLY_PLAYED = gql`
             title
             artist {
                 name
+                id
             }
         }
     }
@@ -176,6 +220,10 @@ export const GET_MOSTLY_PLAYED = gql`
                 name
             }
             viewCount
+            artist {
+                name
+                id
+            }
         }
     }
 `;

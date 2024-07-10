@@ -1,5 +1,15 @@
 import type {Metadata} from "next";
-import {Bungee_Outline, Inter, Nunito} from "next/font/google";
+import {
+    Bungee_Outline,
+    Inter,
+    Libre_Franklin,
+    Montserrat,
+    Nunito, Open_Sans,
+    Poppins,
+    Raleway,
+    Rubik,
+    Ubuntu
+} from "next/font/google";
 import "./globals.css";
 import {Londrina_Outline} from '@next/font/google';
 import React from "react";
@@ -9,6 +19,7 @@ import {GlassPlayerProvider} from "@/context/glass-player-provider";
 
 const inter = Inter({subsets: ["latin"]});
 const nunito = Nunito({subsets: ["latin"]});
+const montserrat = Ubuntu({subsets: ["latin"], weight:'400'});
 const bungee = Bungee_Outline({subsets: ["latin"], weight: '400',});
 const londrina = Londrina_Outline({
     subsets: ['latin'], // Specify the subsets you want to include
@@ -28,7 +39,7 @@ export default function RootLayout({
     return (
         // <html lang="en" data-theme="dark">
         <html lang="en">
-        <body className={`bg-neutral-900 text-gray-100 ${inter.className}`}>
+        <body className={`bg-neutral-900 text-gray-100 ${montserrat.className}`}>
         <Providers>
             <GlassPlayerProvider>
                 {children}

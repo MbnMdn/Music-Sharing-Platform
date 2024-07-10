@@ -13,8 +13,6 @@ export default function RecentlyPlayedSection(){
 
     });
 
-    console.log(error)
-
     return (
         <div className="lg:w-4/6 ">
             <h1 className="text-4xl font-bold mb-11">Recently Played</h1>
