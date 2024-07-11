@@ -28,8 +28,6 @@ export const GET_ARTIST = gql`
 `;
 
 
-
-
 export const GET_USER = gql`
     query GetUser ($user_id: ID!){
         user(id: $user_id) {
@@ -165,6 +163,39 @@ export const GET_ME = gql`
             name
             role_id
             updated_at
+        }
+    }
+`;
+
+
+
+
+
+
+export const GET_ALL_USERS = gql`
+    query GetAllUsers {
+        users {
+            avatar
+            name
+            id
+            email_verified_at
+            email
+        }
+    }
+`;
+
+
+
+export const GET_ALL_TRACKS = gql`
+    query GetTracks {
+        tracks {
+            cover
+            id
+            title
+            artist {
+                id
+                name
+            }
         }
     }
 `;

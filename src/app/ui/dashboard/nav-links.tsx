@@ -23,7 +23,7 @@ export default function NavLinks() {
 
     const links = [
         {name: 'Home', href: '/', icon: FiHome},
-        {name: 'Profile', href: `/user/${data?.me.id}`, icon: HiOutlineUser,},
+        {name: 'Profile', href: `/users/${data?.me.id}`, icon: HiOutlineUser,},
         // {name: 'Favorites', href: '/dashboard/customers', icon: RiHeart3Line},
         // {name: 'Upload', href: '', icon: TbUpload},
         {name: 'Log Out', href: '/auth', icon: TbLogout},

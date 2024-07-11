@@ -22,52 +22,52 @@ export default function TrendingSongCardsScrollable() {
     // const songs = [
     //     {
     //         song_name : 'Red',
-    //         artist: 'Taylor Swift',
+    //         artists: 'Taylor Swift',
     //         pic: {MusicPic},
     //     },
     //     {
     //         song_name : 'MockingBird',
-    //         artist: 'Eminem',
+    //         artists: 'Eminem',
     //         pic: {MusicPic},
     //     },
     //     {
     //         song_name : 'Champion',
-    //         artist: 'PSY',
+    //         artists: 'PSY',
     //         pic: {MusicPic},
     //     },
     //     {
     //         song_name : 'Despacito',
-    //         artist: 'Justin Bieber',
+    //         artists: 'Justin Bieber',
     //         pic: {MusicPic},
     //     },
     //     {
     //         song_name : 'Blinding Lights',
-    //         artist: 'The weekend',
+    //         artists: 'The weekend',
     //         pic: {MusicPic},
     //     },
     //     {
     //         song_name : 'Red',
-    //         artist: 'Taylor Swift',
+    //         artists: 'Taylor Swift',
     //         pic: {MusicPic},
     //     },
     //     {
     //         song_name : 'MockingBird',
-    //         artist: 'Eminem',
+    //         artists: 'Eminem',
     //         pic: {MusicPic},
     //     },
     //     {
     //         song_name : 'Champion',
-    //         artist: 'PSY',
+    //         artists: 'PSY',
     //         pic: {MusicPic},
     //     },
     //     {
     //         song_name : 'Despacito',
-    //         artist: 'Justin Bieber',
+    //         artists: 'Justin Bieber',
     //         pic: {MusicPic},
     //     },
     //     {
     //         song_name : 'Blinding Lights',
-    //         artist: 'The weekend',
+    //         artists: 'The weekend',
     //         pic: {MusicPic},
     //     },
     //

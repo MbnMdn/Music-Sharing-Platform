@@ -7,7 +7,5 @@ export const getMediaPath = (path: string) => {
             return 'https://websong.liara.run/storage/' + path;
         }
     }
-
     return path
-
 };

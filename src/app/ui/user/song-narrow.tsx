@@ -85,7 +85,7 @@ export default function SongNarrow({
                     <div className="flex-grow">
                         <div className="text-lg font-semibold">
                             <Link href={{
-                                pathname: `song/${song.id}`,
+                                pathname: `/song/${song.id}`,
                             }}>
                                 {song?.title}
                             </Link>
@@ -94,7 +94,7 @@ export default function SongNarrow({
                         {singer === 1 && (
                             <Link
                                 href={{
-                                    pathname: `artist/${song?.artist.id}`,
+                                    pathname: `artists/${song?.artist.id}`,
                                 }}
                                 key={song?.artist.id}
                             >
@@ -200,7 +200,7 @@ const formatDuration = (duration: number) => {
 //                     />
 //                     <div className="flex-grow">
 //                         <div className="text-lg font-semibold">{songNarrow.name}</div>
-//                         {artist === 1 && (
+//                         {artists === 1 && (
 //                             <span className="flex items-center gap-1">{songNarrow.singerName}</span>)}
 //                     </div>
 //                     <div className="flex items-center space-x-20">

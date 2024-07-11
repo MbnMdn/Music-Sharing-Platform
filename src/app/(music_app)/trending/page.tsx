@@ -13,15 +13,11 @@ export default function Page() {
         }
     });
 
-    console.log(data);
-    console.log(error)
-    console.log(loading)
-
     return (
         <>
             <TrendingCoverImage/>
             {data?.trendingTracks.map((song: any, index: any) => (
-                <SongNarrow edit={0} hover={1} song={song} key={song.id} song_id={song.id}/>
+                <SongNarrow edit={0} index={index}  hover={1} song={song} key={song.id} song_id={song.id}/>
             ))}
         </>
     );

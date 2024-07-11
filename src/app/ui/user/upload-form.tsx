@@ -19,8 +19,10 @@ import {Label} from "@/components/ui/label"
 // import {useMediaQuery} from "@react-hook/media-query";
 import {Textarea} from "@/components/ui/textarea"
 import {IoIosAddCircleOutline} from "react-icons/io";
-import {useMutation} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
 import {UPLOAD_SONG} from "@/graphql/mutations";
+import {GET_ALL_ARTISTS} from "@/graphql/queries";
+import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 
 
 export function UploadDrawer() {
@@ -28,9 +30,14 @@ export function UploadDrawer() {
 
     const [uploadSong, {data, loading, error}] = useMutation(UPLOAD_SONG);
 
+
+    const {data: dataArtists, loading: loadingArtists, error: errorArtists} = useQuery(GET_ALL_ARTISTS, {});
+
+
     const name = useRef<string>("");
-    const singer = useRef<string>("");
-    const duration = useRef<string>("");
+    // const singer = useRef<string>("");
+    const selectedArtistRef = useRef(null);
+    const duration = useRef<number>(0);
     const genre = useRef<string>("");
     const lyrics = useRef<string>("");
 
@@ -59,6 +66,8 @@ export function UploadDrawer() {
     //     )
     // }
 
+    // @ts-ignore
+    // @ts-ignore
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
@@ -89,10 +98,27 @@ export function UploadDrawer() {
                             </div>
                             <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
                                 <Label htmlFor="singer">Singer</Label>
-                                <Input className="bg-neutral-800" type="text" id="singer"
-                                       placeholder="Who is the singer of this song?"
-                                       onChange={(e) => singer.current = e.target.value}
-                                />
+                                {/*<Input className="bg-neutral-800" type="text" id="singer"*/}
+                                {/*       placeholder="Who is the singer of this song?"*/}
+                                {/*       onChange={(e) => singer.current = e.target.value}*/}
+                                {/*/>*/}
+
+                                <Select onValueChange={(value) => {
+                                    selectedArtistRef.current = value;
+                                }}>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select the artist"/>
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            {dataArtists?.artists.map((artist: any) => (
+                                                <SelectItem key={artist.id} value={artist.id}>{artist.name}</SelectItem>
+                                            ))}
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+
+
                             </div>
                         </div>
 
@@ -101,9 +127,9 @@ export function UploadDrawer() {
 
                             <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
                                 <Label htmlFor="year">duration</Label>
-                                <Input className="bg-neutral-800" type="number" id="year"
-                                       placeholder="How long is the track?"
-                                       onChange={(e) => duration.current = e.target.value}
+                                <Input className="bg-neutral-800" type="number" id="duration"
+                                       placeholder="How long is the track? (seconds)"
+                                       onChange={(e) => duration.current = Number(e.target.value)}
 
                                 />
                             </div>
@@ -140,7 +166,10 @@ export function UploadDrawer() {
 
                         <div className="grid gap-2 mb-3">
                             <Label htmlFor="lyrics">Lyrics</Label>
-                            <Textarea placeholder="Enter the lyrics"/>
+                            <Textarea placeholder="Enter the lyrics" id="lyrics"
+                                      onChange={(e) => lyrics.current = e.target.value}
+
+                            />
                         </div>
 
                     </form>
@@ -152,12 +181,12 @@ export function UploadDrawer() {
                             onClick={() => uploadSong({
                                 variables: {
                                     title: name.current,
-                                    duration: 10,
+                                    duration: duration.current,
                                     genre_id: 1,
-                                    artist_id: 4,
+                                    artist_id: selectedArtistRef.current,
                                     cover: cover.current.files[0],
                                     file: songFile.current.files[0],
-                                    lyrics : " "
+                                    lyrics: lyrics.current,
                                 },
                             })}
                     >Upload</Button>
