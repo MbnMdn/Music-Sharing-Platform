@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import MusicPic from './assets/music-pic.jpg'
+import MusicPic from '../assets/music-pic.jpg'
 import {Button, Card, CardBody, Image, Slider} from "@nextui-org/react";
 import {HeartIcon} from "./MusicPlayer/HeartIcon";
 import {PauseCircleIcon} from "./MusicPlayer/PauseCircleIcon";

@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from "react"
+import {useRef} from "react"
 
 import {cn} from "@/lib/utils"
 import {Button} from "@/components/ui/button"
@@ -9,7 +10,6 @@ import {
     DrawerClose,
     DrawerContent,
     DrawerDescription,
-    DrawerFooter,
     DrawerHeader,
     DrawerTitle,
     DrawerTrigger,
@@ -19,8 +19,6 @@ import {Label} from "@/components/ui/label"
 // import {useMediaQuery} from "@react-hook/media-query";
 import {Textarea} from "@/components/ui/textarea"
 import {IoIosAddCircleOutline} from "react-icons/io";
-import {useRef} from "react";
-import {readFile} from "node:fs";
 import {useMutation} from "@apollo/client";
 import {UPLOAD_SONG} from "@/graphql/mutations";
 
@@ -34,7 +32,7 @@ export function UploadDrawer() {
     const singer = useRef<string>("");
     const duration = useRef<string>("");
     const genre = useRef<string>("");
-    const lyrics =useRef<string>("");
+    const lyrics = useRef<string>("");
 
     const cover = useRef<any>(null);
     const songFile = useRef<any>(null);
@@ -79,7 +77,7 @@ export function UploadDrawer() {
                 </DrawerHeader>
                 {/*upload form:*/}
                 <div className="px-4">
-                    <form className={cn("grid items-start gap-0 w-4/5 md:w-5/6 lg:w-2/3 overflow-y-auto")}>
+                    <form className={cn("grid items-center gap-0  overflow-y-auto")}>
 
                         <div className="flex flex-col md:flex-row justify-between mb-0 md:mb-3">
                             <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
@@ -123,16 +121,19 @@ export function UploadDrawer() {
                         <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
 
                             <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
-                                <Label htmlFor="genre">Cover image</Label>
-                                <Input className="bg-neutral-800" id="cover" type="file" accept="image/*"
+                                <Label htmlFor="genre">Cover</Label>
+                                <Input className="bg-neutral-800" id="cover" type="file"
                                        ref={cover}
                                 />
+
+
                             </div>
 
 
                             <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
                                 <Label htmlFor="genre">Song file</Label>
                                 <Input className="bg-neutral-800" id="cover" type="file" ref={songFile}/>
+
                             </div>
                         </div>
 
@@ -141,22 +142,23 @@ export function UploadDrawer() {
                             <Label htmlFor="lyrics">Lyrics</Label>
                             <Textarea placeholder="Enter the lyrics"/>
                         </div>
+
                     </form>
                 </div>
                 {/*<UploadForm className="px-4"/>*/}
                 <div className="flex gap-10">
                     <Button type="submit" variant="outline"
                             className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5"
-                        onClick={() => uploadSong({
-                            variables:{
-                                title: name.current,
-                                duration: 10,
-                                rank: 1,
-                                artist_id: 4,
-                                cover: cover.current.files[0],
-                                file: songFile.current.files[0]
-                            },
-                        })}
+                            onClick={() => uploadSong({
+                                variables: {
+                                    title: name.current,
+                                    duration: 10,
+                                    rank: 1,
+                                    artist_id: 4,
+                                    cover: cover.current.files[0],
+                                    file: songFile.current.files[0]
+                                },
+                            })}
                     >Upload</Button>
                     <DrawerClose asChild>
                         <Button variant="outline"

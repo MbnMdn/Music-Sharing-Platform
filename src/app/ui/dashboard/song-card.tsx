@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import MusicPic from "./assets/music-pic.jpg";
+
 import React from "react";
 import {removeFeat} from "@/app/utilities/remove-feat"
 import {getMediaPath} from "@/app/utilities/getMediaPath";

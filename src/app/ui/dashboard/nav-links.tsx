@@ -9,16 +9,26 @@ import { TbHome } from "react-icons/tb";
 
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
+import {useQuery} from "@apollo/client";
+import {GET_ME} from "@/graphql/queries";
 
-const links = [
-    {name: 'Home', href: '/dashboard', icon: FiHome},
-    {name: 'Profile', href: '/artist', icon: HiOutlineUser,},
-    // {name: 'Favorites', href: '/dashboard/customers', icon: RiHeart3Line},
-    // {name: 'Upload', href: '', icon: TbUpload},
-    {name: 'Log Out', href: '/auth', icon: TbLogout},
-];
+
+
+
 
 export default function NavLinks() {
+
+    const {data, loading, error} = useQuery(GET_ME, {
+    });
+
+    const links = [
+        {name: 'Home', href: '/', icon: FiHome},
+        {name: 'Profile', href: `/user/${data?.me.id}`, icon: HiOutlineUser,},
+        // {name: 'Favorites', href: '/dashboard/customers', icon: RiHeart3Line},
+        // {name: 'Upload', href: '', icon: TbUpload},
+        {name: 'Log Out', href: '/auth', icon: TbLogout},
+    ];
+
     const pathname = usePathname();
     return (
         <>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import MusicPic from "@/app/ui/dashboard/assets/music-pic.jpg";
+import MusicPic from "@/app/ui/assets/music-pic.jpg";
 
 import React from "react";
 import LyricsDrawer from "@/app/ui/song/lyrics-drawer";

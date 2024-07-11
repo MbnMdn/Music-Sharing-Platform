@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 import Slider from "@/app/ui/register/slider";
-import AuthForm from "@/app/auth/auth-form";
+import AuthForm from "@/app/(auth)/auth/auth-form";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 

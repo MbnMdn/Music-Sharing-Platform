@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/drawer"
 // import {useMediaQuery} from "@react-hook/media-query";
 import {MdOutlineLyrics} from "react-icons/md";
-import MusicPic from "@/app/ui/dashboard/assets/music-pic.jpg";
+import MusicPic from "@/app/ui/assets/music-pic.jpg";
 
 
 const song = {

@@ -1,4 +1,4 @@
-import SingerPic from "@/app/ui/dashboard/assets/singer.png";
+import SingerPic from "@/app/ui/assets/singer.png";
 import React from "react";
 import {getMediaPath} from "@/app/utilities/getMediaPath";
 

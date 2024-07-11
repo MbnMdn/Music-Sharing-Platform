@@ -10,7 +10,6 @@ export default function RecentlyPlayedSection(){
     const session = useSession();
 
     const {data, loading, error} = useQuery(GET_RECENTLY_PLAYED, {
-
     });
 
     return (

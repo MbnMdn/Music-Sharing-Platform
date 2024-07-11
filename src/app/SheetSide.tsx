@@ -12,9 +12,14 @@ import {PiNotificationBold} from "react-icons/pi";
 import React from "react";
 import {TbNotification} from "react-icons/tb";
 import {useSession} from "next-auth/react";
+import {useQuery} from "@apollo/client";
+import {GET_ME, GET_RECENTLY_PLAYED} from "@/graphql/queries";
+import {getMediaPath} from "@/app/utilities/getMediaPath";
 
 export function SheetSide() {
-    const {data, update, status} = useSession()
+    const {data, loading, error} = useQuery(GET_ME, {
+    });
+
     return (
         <Sheet>
             <SheetTrigger asChild>
@@ -22,13 +27,12 @@ export function SheetSide() {
                     <div className=" flex w-full avatar  space-x-2">
                         {/*<SheetSide/>*/}
                         <div className="w-14 h-14 rounded-xl">
-                            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                            <img src={getMediaPath(data?.me.avatar)}
                                  alt="alt"/>
                         </div>
                         <div className="flex flex-col content-center">
                             <p className="text-md flex gap-2">
-                                {status == "authenticated" ? data?.user.user.name : "Login"}
-
+                                {data?.me.name}
                                 {/*<TbNotification className="self-center"/>*/}
 
                                 <svg className="self-center" width="12" height="15" viewBox="0 0 20 23" fill="none"
@@ -43,7 +47,7 @@ export function SheetSide() {
 
 
                             </p>
-                            <p className="text-xs">@mbn_mdn</p>
+                            <p className="text-xs text-neutral-500">@{data?.me.name}</p>
                         </div>
                     </div>
                 </div>

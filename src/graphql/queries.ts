@@ -87,12 +87,6 @@ export const GET_TRENDING = gql`
 `;
 
 
-
-
-
-
-
-
 export const GET_SONG = gql`
     query GetSong($song_id: ID!) {
         track(id: $song_id) {
@@ -155,6 +149,22 @@ export const GET_RECENTLY_PLAYED = gql`
                 name
                 id
             }
+        }
+    }
+`;
+
+
+export const GET_ME = gql`
+    query GetMe {
+        me {
+            avatar
+            created_at
+            email
+            email_verified_at
+            id
+            name
+            role_id
+            updated_at
         }
     }
 `;

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import MusicPic from './assets/music-pic.jpg'
+import MusicPic from '../assets/music-pic.jpg'
 
 import { PiPlayCircleDuotone } from "react-icons/pi";
 import { IoPlayBack } from "react-icons/io5";

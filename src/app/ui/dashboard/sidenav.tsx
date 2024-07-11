@@ -2,6 +2,8 @@ import NavLinks from '@/app/ui/dashboard/nav-links';
 import React from "react";
 import GlassPlayer from "@/app/ui/dashboard/glass-player";
 import {SheetSide} from "@/app/SheetSide";
+import {Label} from "@/components/ui/label";
+import {Input} from "@/components/ui/input";
 
 export default function SideNav() {
     return (

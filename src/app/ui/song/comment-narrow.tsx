@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import MusicPic from '../dashboard/assets/music-pic.jpg'
+
 import Image from 'next/image'
 
 

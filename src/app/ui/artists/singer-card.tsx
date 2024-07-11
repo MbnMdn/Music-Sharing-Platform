@@ -1,5 +1,4 @@
 import {Image} from "@nextui-org/react";
-import MusicPic from "../dashboard/assets/music-pic.jpg";
 import React from "react";
 
 export default function SingerCard({artist}: { artist: any }) {

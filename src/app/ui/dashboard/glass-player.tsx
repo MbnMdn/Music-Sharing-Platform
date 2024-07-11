@@ -1,3 +1,5 @@
+"use client"
+
 import {Image} from "@nextui-org/react";
 import {RepeatOneIcon} from "@/app/ui/dashboard/MusicPlayer/RepeatOneIcon";
 import {PreviousIcon} from "@/app/ui/dashboard/MusicPlayer/PreviousIcon";

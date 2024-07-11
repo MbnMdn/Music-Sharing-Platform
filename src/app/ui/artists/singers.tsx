@@ -1,13 +1,12 @@
 import React from 'react'
 import SingerCard from "@/app/ui/artists/singer-card";
 
-import MusicPic from "@/app/ui/dashboard/assets/music-pic.jpg";
 import {useQuery} from "@apollo/client";
 import {GET_ALL_ARTISTS, GET_ARTIST} from "@/graphql/queries";
 import Link from "next/link";
 import SongCard from "@/app/ui/dashboard/song-card";
 
-// const artists = [
+// const categories = [
 //     {
 //         artist: 'Taylor Swift',
 //         pic: {MusicPic},
@@ -102,7 +101,7 @@ export default function Singers() {
                 {data?.artists.map((artist: any, index: React.Key | null | undefined) => (
                     <Link
                         href={{
-                            pathname: `artist/${artist.id}`,
+                            pathname: `/artist/${artist.id}`,
                         }}
                         key={artist.id}
                     >
