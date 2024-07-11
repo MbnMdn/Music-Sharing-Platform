@@ -153,10 +153,11 @@ export function UploadDrawer() {
                                 variables: {
                                     title: name.current,
                                     duration: 10,
-                                    rank: 1,
+                                    genre_id: 1,
                                     artist_id: 4,
                                     cover: cover.current.files[0],
-                                    file: songFile.current.files[0]
+                                    file: songFile.current.files[0],
+                                    lyrics : " "
                                 },
                             })}
                     >Upload</Button>

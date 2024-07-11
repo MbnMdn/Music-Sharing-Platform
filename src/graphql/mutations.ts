@@ -26,9 +26,9 @@ export const CREATE_COMMENT = gql`
 `;
 
 export const UPLOAD_SONG = gql`
-    mutation UploadSong($title: String!, $duration: Int!, $file: Upload!, $cover: Upload!, $artist_id: ID!, $rank: Int!) {
+    mutation UploadSong($title: String!, $duration: Int!, $file: Upload!, $cover: Upload!, $artist_id: ID!, $genre_id: ID!, $lyrics: String!) {
         uploadSong(
-            input: {title: $title, duration: $duration, file: $file, cover: $cover, artist_id: $artist_id, rank: $rank}
+            input: {title: $title, duration: $duration, file: $file, cover: $cover, artist_id: $artist_id, genre_id: $genre_id, lyrics: $lyrics}
         ) {
             message
             status
