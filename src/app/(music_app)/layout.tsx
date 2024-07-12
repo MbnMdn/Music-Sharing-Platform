@@ -70,7 +70,7 @@ export default function RootLayout({
                         <SideNav/>
                     </div>
                     <div className="flex-grow md:px-6 overflow-y-auto md:px-11 ">
-                        <div className="sticky top-0  z-50 bg-neutral-900 ">
+                        <div className="sticky top-0  z-50 bg-transparent md:bg-neutral-900 ">
                             <div className="flex space-x-20 justify-between items-center  md:p-6  md:pt-11 ">
                                 <Breadcrumbs/>
                                 <SearchBar/>
