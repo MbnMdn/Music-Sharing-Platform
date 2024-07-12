@@ -33,7 +33,6 @@ export function EditSongDrawer({trackId}: { trackId: number }) {
         }
     });
 
-    console.log(dataTrack?.track.artist.name);
 
     const [open, setOpen] = React.useState(false)
     const [uploadSong, {data, loading, error}] = useMutation(UPLOAD_SONG);
@@ -83,9 +82,9 @@ export function EditSongDrawer({trackId}: { trackId: number }) {
                                 <Select onValueChange={(value) => {
                                     // @ts-ignore
                                     selectedArtistRef.current = value;
-                                }}>
+                                }} defaultValue={dataTrack?.track.artist.id}>
                                     <SelectTrigger>
-                                        <SelectValue defaultValue={dataTrack?.track.artist.id}/>
+                                        <SelectValue placeholder="Select the artist"/>
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
@@ -118,7 +117,7 @@ export function EditSongDrawer({trackId}: { trackId: number }) {
                                 <Select onValueChange={(value) => {
                                     // @ts-ignore
                                     selectedGenre.current = value;
-                                }}>
+                                }} defaultValue={dataTrack?.track.genres[0].id}>
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select the genre"/>
                                     </SelectTrigger>

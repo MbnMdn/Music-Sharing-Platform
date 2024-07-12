@@ -142,7 +142,6 @@ export function UploadDrawer() {
                                 <Select onValueChange={(value) => {
                                     // @ts-ignore
                                     selectedGenre.current = value;
-                                    console.log(selectedGenre.current)
                                 }}>
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select the genre"/>

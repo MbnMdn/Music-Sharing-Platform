@@ -108,6 +108,10 @@ export const GET_SONG = gql`
                 }
                 user_id
             }
+            genres{
+                id
+                name
+            }
             cover
             created_at
             duration
