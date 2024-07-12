@@ -87,7 +87,7 @@ export default function SongInfoCover({id}: { id: number }) {
 
 
                                                 <div className="flex flex-col ml-6 justify-end">
-                                                <div className="mb-5">
+                                                    <div className="mb-5">
                                                         {/*<div className="flex  gap-3 ">*/}
                                                         {/*<FaCirclePlay size={38} className="mt-1"/>*/}
 
@@ -118,7 +118,7 @@ export default function SongInfoCover({id}: { id: number }) {
                                             loading ? (
                                                     <div data-theme="halloween"
                                                          className="mobile-only  flex flex-col bg-transparent">
-                                                    <div className="flex gap-4">
+                                                        <div className="flex gap-4">
                                                             <div className="flex-col">
                                                                 <div className="skeleton h-40 w-40 rounded-md "></div>
                                                             </div>

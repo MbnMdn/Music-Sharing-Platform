@@ -18,7 +18,7 @@ import {getMediaPath} from "@/app/utilities/getMediaPath";
 
 type SliderProps = React.ComponentProps<typeof Slider>;
 
-export default function GlassPlayer() {
+export default function GlassPlayer({shadow} : {shadow: boolean}) {
     const [songId, setSongId] = useState(1); // Default song ID
     // const {data, loading, error, refetch} = useQuery(GET_SONG, {
     //     variables: {
@@ -153,7 +153,8 @@ export default function GlassPlayer() {
                 onEnded={nextTrack}
             />
             <div className="relative card w-full max-h-96 glass hover:bg-base-100/5">
-                <AverageColorSpan imageUrl={providerTrackId?.cover}/>
+                {shadow && <AverageColorSpan imageUrl={providerTrackId?.cover}/>}
+
                 <div className="flex justify-center items-center w-full mt-5">
                     <div className="max-w-[80%] image-container">
                         <Image

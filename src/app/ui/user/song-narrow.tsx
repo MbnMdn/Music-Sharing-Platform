@@ -8,7 +8,7 @@ import EyeIcon from "@/app/ui/icons/eye-icon";
 import clsx from 'clsx';
 import {usePlayerContext} from "@/context/glass-player-provider";
 import {useLazyQuery} from "@apollo/client";
-import {GET_SONG} from "@/graphql/queries";
+import {GET_SONG, GET_SONG_TO_PLAY} from "@/graphql/queries";
 import {FaPlay} from "react-icons/fa";
 import Link from "next/link";
 import SingerCard from "@/app/ui/artists/singer-card";
@@ -42,7 +42,7 @@ export default function SongNarrow({
                                        index = 0
                                    }: SongNarrowProps) {
     const [hovered, setHovered] = useState(false);
-    const [getSong, {loading, data}] = useLazyQuery(GET_SONG);
+    const [getSong, {loading, data}] = useLazyQuery(GET_SONG_TO_PLAY);
 
     // @ts-ignore
     const [providerTrackId, setNewTrack, isPlaying, setIsPlaying] = usePlayerContext();

@@ -17,7 +17,7 @@ export default function Page({params}: { params: { id: number } }) {
     const placeholderArray = new Array(10).fill(null);
 
     return (
-        <div>
+        <div className="mb-8">
             {loading ?
                 <div data-theme="halloween" className="skeleton rounded-md h-52 md:h-72 lg:h-96 w-full my-6 "></div>
                 :

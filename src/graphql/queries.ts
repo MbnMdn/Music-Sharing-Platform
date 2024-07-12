@@ -9,6 +9,9 @@ export const GET_ARTIST = gql`
             like_count
             picture
             header_image
+            artistTrackComments
+            artistTrackLikes
+            artistTrackViews
             tracks {
                 id
                 cover
@@ -34,6 +37,9 @@ export const GET_USER = gql`
             avatar
             created_at
             email
+            uploadedTrackComments
+            uploadedTrackLikes
+            uploadedTrackViews
             email_verified_at
             id
             name
@@ -121,6 +127,42 @@ export const GET_SONG = gql`
 `;
 
 
+
+
+
+export const GET_SONG_UPLOADER = gql`
+    query GetSongUploader($song_id: ID!) {
+        track(id: $song_id) {
+            uploader {
+                email
+                id
+                name
+            }
+        }
+    }
+`;
+
+
+
+export const GET_SONG_TO_PLAY = gql`
+    query GetSongToPlay($song_id: ID!) {
+        track(id: $song_id) {
+            artist {
+                id
+                name
+                picture
+            }
+            cover
+            duration
+            file_link
+            id
+            title
+        }
+    }
+`;
+
+
+
 export const GET_RECENTLY_PLAYED = gql`
     query GetRecentlyPlayed {
         getRecentlyViewedSongs {
@@ -156,6 +198,14 @@ export const GET_ME = gql`
 `;
 
 
+
+export const GET_MY_ID = gql`
+    query GetMe {
+        me {
+            id
+        }
+    }
+`;
 
 
 
