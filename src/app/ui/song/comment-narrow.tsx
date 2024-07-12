@@ -5,28 +5,11 @@ import React from 'react';
 import Image from 'next/image'
 
 
-// const comment = {
-//     id: 1,
-//     name: 'Taylor Swift',
-//     username: '@taylor_s',
-//     comment: 'hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor hey im a comment from taylor',
-//     profilePic: {MusicPic},
-//     date: '20 May 2024',
-//     time: '20:23'
-// };
-
-
-
-
 export default function CommentNarrow({comment} : {comment : any}) {
 
     const [date, time] = comment?.created_at.split(' ');
     const [hour, minute] = time.split(':');
     const formattedTime = `${hour}:${minute}`;
-
-
-
-    console.log(comment);
 
     return (
         <div className="flex flex-col text-white   rounded-md justify-between ">

@@ -27,7 +27,7 @@ export function GlassPlayerProvider({ children }: React.PropsWithChildren) {
         artist: {
             name : 'Daft Punk',
         },
-        duration: 1,
+        duration: 248,
         file_link: 'https://cdns-preview-b.dzcdn.net/stream/c-bdab5f5d846a91f14a01b75731dbc22a-7.mp3'
     }); // Default song ID
 

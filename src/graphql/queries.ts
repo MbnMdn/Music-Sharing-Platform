@@ -59,13 +59,6 @@ export const GET_USER = gql`
 
 
 
-
-
-
-
-
-
-
 export const GET_TRENDING = gql`
     query GetTrendingSongs($limit: Int!) {
         trendingTracks(limit: $limit) {
@@ -113,11 +106,6 @@ export const GET_SONG = gql`
             created_at
             duration
             file_link
-            genres {
-                id
-                name
-                picture
-            }
             id
             likeCount
             rank
@@ -199,6 +187,20 @@ export const GET_ALL_TRACKS = gql`
         }
     }
 `;
+
+
+
+
+export const GET_ALL_GENRES = gql`
+    query GetGenres {
+        genres {
+            id
+            name
+            picture
+        }
+    }
+`;
+
 
 
 export const GET_ALL_ARTISTS = gql`

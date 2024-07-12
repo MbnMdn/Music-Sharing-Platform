@@ -76,7 +76,7 @@ const config = {
   },
   plugins: [require("tailwindcss-animate"),require('daisyui')],
   daisyui: {
-    themes: ["light", "dark", "cupcake", "valentine",
+    themes: ["light", "dark", "cupcake", "valentine", "halloween"
     ],
   },
 } satisfies Config

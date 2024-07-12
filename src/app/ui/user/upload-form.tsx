@@ -21,7 +21,7 @@ import {Textarea} from "@/components/ui/textarea"
 import {IoIosAddCircleOutline} from "react-icons/io";
 import {useMutation, useQuery} from "@apollo/client";
 import {UPLOAD_SONG} from "@/graphql/mutations";
-import {GET_ALL_ARTISTS} from "@/graphql/queries";
+import {GET_ALL_ARTISTS, GET_ALL_GENRES} from "@/graphql/queries";
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 
 
@@ -33,14 +33,15 @@ export function UploadDrawer() {
 
     const {data: dataArtists, loading: loadingArtists, error: errorArtists} = useQuery(GET_ALL_ARTISTS, {});
 
+    const {data: dataGenres, loading: loadingGenres, error: errorGenres} = useQuery(GET_ALL_GENRES, {});
+
 
     const name = useRef<string>("");
     // const singer = useRef<string>("");
     const selectedArtistRef = useRef(null);
     const duration = useRef<number>(0);
-    const genre = useRef<string>("");
+    const selectedGenre = useRef(null);
     const lyrics = useRef<string>("");
-
     const cover = useRef<any>(null);
     const songFile = useRef<any>(null);
 
@@ -104,6 +105,7 @@ export function UploadDrawer() {
                                 {/*/>*/}
 
                                 <Select onValueChange={(value) => {
+                                    // @ts-ignore
                                     selectedArtistRef.current = value;
                                 }}>
                                     <SelectTrigger>
@@ -136,10 +138,23 @@ export function UploadDrawer() {
 
                             <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
                                 <Label htmlFor="genre">Genre</Label>
-                                <Input className="bg-neutral-800" type="text" id="genre"
-                                       placeholder="What is the genre of this song?"
-                                       onChange={(e) => genre.current = e.target.value}
-                                />
+
+                                <Select onValueChange={(value) => {
+                                    // @ts-ignore
+                                    selectedGenre.current = value;
+                                    console.log(selectedGenre.current)
+                                }}>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select the genre"/>
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            {dataGenres?.genres.map((genre: any) => (
+                                                <SelectItem key={genre.id} value={genre.id}>{genre.name}</SelectItem>
+                                            ))}
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
                             </div>
                         </div>
 
@@ -149,17 +164,13 @@ export function UploadDrawer() {
                             <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
                                 <Label htmlFor="genre">Cover</Label>
                                 <Input className="bg-neutral-800" id="cover" type="file"
-                                       ref={cover}
-                                />
-
-
+                                       ref={cover}/>
                             </div>
 
 
                             <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
                                 <Label htmlFor="genre">Song file</Label>
                                 <Input className="bg-neutral-800" id="cover" type="file" ref={songFile}/>
-
                             </div>
                         </div>
 
@@ -168,7 +179,6 @@ export function UploadDrawer() {
                             <Label htmlFor="lyrics">Lyrics</Label>
                             <Textarea placeholder="Enter the lyrics" id="lyrics"
                                       onChange={(e) => lyrics.current = e.target.value}
-
                             />
                         </div>
 
@@ -182,7 +192,7 @@ export function UploadDrawer() {
                                 variables: {
                                     title: name.current,
                                     duration: duration.current,
-                                    genre_id: 1,
+                                    genre_id: selectedGenre.current,
                                     artist_id: selectedArtistRef.current,
                                     cover: cover.current.files[0],
                                     file: songFile.current.files[0],
@@ -201,67 +211,3 @@ export function UploadDrawer() {
     )
 
 }
-
-//
-// function UploadForm({className}: React.ComponentProps<"form">) {
-//     return (
-//         <form className={cn("grid items-start gap-0 w-4/5 md:w-5/6 lg:w-2/3 overflow-y-auto", className)}>
-//
-//             <div className="flex flex-col md:flex-row justify-between mb-0 md:mb-3">
-//                 <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
-//                     <Label htmlFor="name">Name</Label>
-//                     <Input className="bg-neutral-800" type="text" id="name"
-//                            placeholder="What is the name of this song?"
-//                            onChange={(e) => name.current = e.target.value}
-//                     />
-//                 </div>
-//                 <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
-//                     <Label htmlFor="singer">Singer</Label>
-//                     <Input className="bg-neutral-800" type="text" id="singer"
-//                            placeholder="Who is the singer of this song?"/>
-//                 </div>
-//             </div>
-//
-//
-//             <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
-//
-//                 <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
-//                     <Label htmlFor="year">Release year</Label>
-//                     <Input className="bg-neutral-800" type="number" id="year"
-//                            placeholder="What year was this song released?"/>
-//                 </div>
-//
-//                 <div className="grid gap-2 w-full md:w-5/12 mb-3 ">
-//                     <Label htmlFor="genre">Genre</Label>
-//                     <Input className="bg-neutral-800" type="text" id="genre"
-//                            placeholder="What is the genre of this song?"/>
-//                 </div>
-//
-//             </div>
-//
-//
-//             <div className="flex  flex-col md:flex-row justify-between  mb-0 md:mb-3">
-//
-//                 <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
-//                     <Label htmlFor="genre">Cover image</Label>
-//                     <Input  className="bg-neutral-800" id="cover" type="file"/>
-//                 </div>
-//
-//
-//                 <div className="grid gap-2  w-full md:w-5/12 items-end mb-3 ">
-//                     <Label htmlFor="genre">Song file</Label>
-//                     <Input className="bg-neutral-800" id="cover" type="file"/>
-//                 </div>
-//             </div>
-//
-//
-//             <div className="grid gap-2 mb-3">
-//                 <Label htmlFor="lyrics">Lyrics</Label>
-//                 <Textarea placeholder="Enter the lyrics"/>
-//             </div>
-//         </form>
-//     )
-// }
-
-
-

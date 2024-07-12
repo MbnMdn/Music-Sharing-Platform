@@ -1,7 +1,5 @@
 import {Image} from "@nextui-org/react";
 import React from "react";
-import {removeFeat} from "@/app/utilities/remove-feat"
-
 export default function SongCard({track}: { track: any }) {
     return (
         <div className=" px-5 py-3 " key={track.name}>

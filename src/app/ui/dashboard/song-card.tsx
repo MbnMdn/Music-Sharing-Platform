@@ -21,7 +21,7 @@ export default function SongCard({song}: { song: any }) {
             <div className="flex justify-between">
                 <div className="p-1">
                     <h2 className="text-gray-100 text-lg font-bold ">{removeFeat(song.title)}</h2>
-                    <p className="text-gray-400 text-sm">{song.artist.name}</p>
+                    <p className="text-neutral-500 text-sm">{song.artist.name}</p>
                 </div>
             </div>
         </div>

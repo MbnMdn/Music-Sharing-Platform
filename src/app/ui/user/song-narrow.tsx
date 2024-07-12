@@ -13,6 +13,7 @@ import {FaPlay} from "react-icons/fa";
 import Link from "next/link";
 import SingerCard from "@/app/ui/artists/singer-card";
 import {getMediaPath} from "@/app/utilities/getMediaPath";
+import {removeFeat} from "@/app/utilities/remove-feat"
 
 
 type SongNarrowProps = {
@@ -50,7 +51,7 @@ export default function SongNarrow({
         <div>
             <div
                 className={clsx(
-                    ' text-white flex rounded-md justify-between p-1 md:p-2',
+                    ' text-white flex rounded-xl justify-between p-1',
                     {
                         'hover:bg-neutral-800 ': hover === 1,
                     },
@@ -59,7 +60,7 @@ export default function SongNarrow({
                 onMouseEnter={() => setHovered((v) => true)}
                 onMouseLeave={() => setHovered((v) => false)}
             >
-                <div className="flex items-center w-full  p-0 py-4 md:p-4">
+                <div className="flex items-center w-full  p-0 pb-4 md:p-4">
                     {/*<div className="text-lg font-bold mr-2 md:mr-6">{String(songNarrow.id).padStart(2, '0')}</div>*/}
                     <div className="text-lg font-bold mr-2 md:mr-6">
                         <button onClick={() => getSong({
@@ -71,23 +72,13 @@ export default function SongNarrow({
                         </button>
                     </div>
 
-
-                    {/*<div className="text-lg font-bold mr-2 md:mr-6">{song.rank}</div>*/}
-
-                    {/*<Image*/}
-                    {/*    alt={songNarrow.name}*/}
-                    {/*    className="w-12 h-12 rounded-md mr-2 md:mr-6"*/}
-                    {/*    src={MusicPic.src}*/}
-                    {/*    width="100%"*/}
-                    {/*    height="100%"*/}
-                    {/*/>*/}
                     <img src={getMediaPath(song?.cover)} alt={song?.title} className="w-12 h-12 rounded-md mr-2 md:mr-6"/>
                     <div className="flex-grow">
                         <div className="text-lg font-semibold">
                             <Link href={{
                                 pathname: `/song/${song.id}`,
                             }}>
-                                {song?.title}
+                                {removeFeat(song?.title)}
                             </Link>
 
                         </div>
@@ -98,22 +89,13 @@ export default function SongNarrow({
                                 }}
                                 key={song?.artist.id}
                             >
-                                <span className="flex items-center ">{song?.artist.name}</span>
+                                <span className="flex items-center text-neutral-500">{song?.artist.name}</span>
                             </Link>
                             )}
 
 
                     </div>
                     <div className=" flex items-center space-x-5 md:space-x-10 lg:space-x-12">
-                        {/*{(view === 1 || hovered) && (*/}
-                        {/*    <span className="flex items-center gap-1">{songNarrow.plays}<EyeIcon/> </span>)}*/}
-                        {/*"items-center gap-1" +*/}
-                        {/*<motion.div/>*/}
-
-                        {/*<motion.span*/}
-                        {/*    animate={'show'} initial="hide"*/}
-                        {/*>{songNarrow.plays}<EyeIcon/></motion.span>*/}
-
                         {(view === 1 || hovered) &&
                             <span className="desktop-only flex items-center gap-1">{song.viewCount}
                                 <EyeIcon/>

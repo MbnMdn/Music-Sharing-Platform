@@ -4,6 +4,7 @@ import React from "react";
 import MostlyPlayed from "@/app/ui/dashboard/mostly-played";
 import TrendingSection from "@/app/ui/dashboard/trending-section";
 import RecentlyPlayedSection from "@/app/ui/dashboard/recently-played-section";
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default function Page() {
     return (

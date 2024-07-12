@@ -46,11 +46,11 @@ export default function Breadcrumbs() {
     });
 
     return (
-        <Breadcrumb>
+        <Breadcrumb className="invisible lg:visible">
             <BreadcrumbList>
                 <BreadcrumbItem>
                     <BreadcrumbLink asChild>
-                        <Link href="/">Home</Link>
+                        <Link  className="hover:text-neutral-400 hover:underline" href="/">Home</Link>
                     </BreadcrumbLink>
                 </BreadcrumbItem>
 
@@ -94,7 +94,7 @@ export default function Breadcrumbs() {
                                     <>
                                         <BreadcrumbItem>
                                             <BreadcrumbLink asChild>
-                                                <Link href={`/${pathNames.slice(0, index + 1).join('/')}`}>Song</Link>
+                                                <Link className="hover:text-neutral-400 hover:underline"  href={`/${pathNames.slice(0, index + 1).join('/')}`}>Song</Link>
                                             </BreadcrumbLink>
                                         </BreadcrumbItem>
                                         <BreadcrumbSeparator/>
@@ -106,6 +106,7 @@ export default function Breadcrumbs() {
                                         <BreadcrumbItem>
                                             <BreadcrumbLink asChild>
                                                 <Link
+                                                    className="hover:text-neutral-400 hover:underline"
                                                     href={`/${pathNames.slice(0, index + 1).join('/')}`}>Artists</Link>
                                             </BreadcrumbLink>
                                         </BreadcrumbItem>
@@ -115,18 +116,18 @@ export default function Breadcrumbs() {
                                 {/* Add "users" breadcrumb before the users name */}
                                 {isUserSegment && !isUserIdSegment && (
                                     <>
-                                        <BreadcrumbItem>
-                                            <BreadcrumbLink asChild>
-                                                <Link href={`/${pathNames.slice(0, index + 1).join('/')}`}>Users</Link>
+                                        <BreadcrumbItem >
+                                            <BreadcrumbLink >
+                                                <Link className="hover:text-neutral-400 hover:underline"   href={`/${pathNames.slice(0, index + 1).join('/')}`}>Users</Link>
                                             </BreadcrumbLink>
                                         </BreadcrumbItem>
                                         <BreadcrumbSeparator/>
                                     </>
                                 )}
-                                <BreadcrumbItem>
+                                <BreadcrumbItem className="text-neutral-500">
                                     {!isLastPath && !isSongSegment && !isArtistSegment && !isUserSegment && (
                                         <BreadcrumbLink asChild>
-                                            <Link href={href}>{linkName}</Link>
+                                            <Link className="hover:text-neutral-400 hover:underline" href={href}>{linkName}</Link>
                                         </BreadcrumbLink>
                                     )}
                                     {isLastPath && !isSongSegment && !isArtistSegment && !isUserSegment && (

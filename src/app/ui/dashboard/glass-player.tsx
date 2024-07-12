@@ -16,7 +16,6 @@ import {removeFeat} from "@/app/utilities/remove-feat";
 import {usePlayerContext} from "@/context/glass-player-provider";
 import {getMediaPath} from "@/app/utilities/getMediaPath";
 
-
 type SliderProps = React.ComponentProps<typeof Slider>;
 
 export default function GlassPlayer() {
@@ -88,20 +87,6 @@ export default function GlassPlayer() {
         setProgress(event.target.value);
     };
 
-
-    // const setNewSong = async () => {
-    //     setSongId(providerTrackId);
-    //     // setSongHistory((prev) => [...prev.slice(0, historyIndex + 1), newSongId]);
-    //     // setHistoryIndex((prev) => prev + 1);
-    //     const {data} = await refetch({"song_id": providerTrackId});
-    //
-    //     if (data && audioRef.current) {
-    //         audioRef.current.src = data.track.file_link;
-    //         audioRef.current.currentTime = 0;
-    //         audioRef.current.play();
-    //         setIsPlaying(true);
-    //     }
-    // }
     const nextTrack = async () => {
         if (repeat) {
             // @ts-ignore
