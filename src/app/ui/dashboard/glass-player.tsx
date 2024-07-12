@@ -46,7 +46,6 @@ export default function GlassPlayer({shadow} : {shadow: boolean}) {
 
     const [getSong, {loading, data}] = useLazyQuery(GET_SONG);
 
-    console.log("test");
     const togglePlayPause = () => {
         // @ts-ignore
         if (audioRef.current.paused) {
@@ -67,7 +66,6 @@ export default function GlassPlayer({shadow} : {shadow: boolean}) {
         // @ts-ignore
         const currentProgress = ((audioRef.current.currentTime / audioRef.current.duration) * 100) < 100 ? ((audioRef.current.currentTime / audioRef.current.duration) * 100) : 0;
         // @ts-ignore
-        console.log((audioRef.current.currentTime / audioRef.current.duration) * 100)
         setProgress(currentProgress);
 
         // @ts-ignore

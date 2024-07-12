@@ -9,9 +9,9 @@ export const GET_ARTIST = gql`
             like_count
             picture
             header_image
-            artistTrackComments
-            artistTrackLikes
-            artistTrackViews
+            trackComments
+            trackLikes
+            trackViews
             tracks {
                 id
                 cover
@@ -37,9 +37,9 @@ export const GET_USER = gql`
             avatar
             created_at
             email
-            uploadedTrackComments
-            uploadedTrackLikes
-            uploadedTrackViews
+            trackComments
+            trackLikes
+            trackViews
             email_verified_at
             id
             name
