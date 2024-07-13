@@ -20,7 +20,7 @@ import {Label} from "@/components/ui/label"
 import {Textarea} from "@/components/ui/textarea"
 import {IoIosAddCircleOutline} from "react-icons/io";
 import {useMutation, useQuery} from "@apollo/client";
-import {UPLOAD_SONG} from "@/graphql/mutations";
+import {LIKE_SONG, UPLOAD_SONG} from "@/graphql/mutations";
 import {GET_ALL_ARTISTS, GET_ALL_GENRES} from "@/graphql/queries";
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 
@@ -189,6 +189,7 @@ export function UploadDrawer() {
                             className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5"
                             onClick={() => uploadSong({
                                 variables: {
+                                    id: -1,
                                     title: name.current,
                                     duration: duration.current,
                                     genre_id: selectedGenre.current,
@@ -199,6 +200,7 @@ export function UploadDrawer() {
                                 },
                             })}
                     >Upload</Button>
+
                     <DrawerClose asChild>
                         <Button variant="outline"
                                 className="block bg-transparent hover:bg-neutral-700 hover:text-white my-5">Cancel</Button>

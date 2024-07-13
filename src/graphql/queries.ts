@@ -114,6 +114,7 @@ export const GET_SONG = gql`
             }
             cover
             created_at
+            userLiked
             duration
             file_link
             id
@@ -122,6 +123,10 @@ export const GET_SONG = gql`
             title
             uploader {
                 email
+                id
+                name
+            }
+            genres {
                 id
                 name
             }

@@ -1,22 +1,23 @@
-import Image from "next/image";
-
 import React from "react";
 import LyricsDrawer from "@/app/ui/song/lyrics-drawer";
 import {useMediaQuery} from "@react-hook/media-query";
 import SongDetails from "@/app/ui/song/song-details";
-import {useLazyQuery, useQuery} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
 import {GET_SONG} from "@/graphql/queries";
 import {getMediaPath} from "@/app/utilities/getMediaPath";
 import Link from "next/link";
 import {FaCirclePlay} from "react-icons/fa6";
 import {removeFeat} from "@/app/utilities/remove-feat"
-import UserStatsHover from "@/app/ui/user/user-stats-hover";
 import {usePlayerContext} from "@/context/glass-player-provider";
-import {FaPlay} from "react-icons/fa";
+import {FaHeart, FaRegHeart} from "react-icons/fa";
+import {LIKE_SONG} from "@/graphql/mutations";
 
 
 export default function SongInfoCover({id}: { id: number }) {
     const isDesktop = useMediaQuery("(min-width: 768px)")
+
+
+    const [likeSong, {data: dataLike, loading: loadingLike, error: errorLike}] = useMutation(LIKE_SONG);
 
 
     const {data, loading, error} = useQuery(GET_SONG, {
@@ -77,9 +78,26 @@ export default function SongInfoCover({id}: { id: number }) {
                                                          className="w-44 h-44 lg:w-60 lg:h-60 rounded-md self-center"/>
 
 
-                                                    <button onClick={() => setNewTrack(data.track)} className="absolute bottom-[5%] right-[5%]">
+                                                    <button onClick={() => setNewTrack(data.track)}
+                                                            className="absolute bottom-[5%] right-[5%]">
                                                         <p className=" text-5xl lg:text-7xl text-neutral-50 font-bold flex items-center gap-2">
                                                             <FaCirclePlay size={38} className="mt-1"/></p>
+                                                    </button>
+
+
+                                                    <button
+                                                        onClick={() => likeSong({
+                                                            variables: {
+                                                                track_id: id,
+                                                            },
+                                                        })}
+                                                        className="absolute md:bottom-[30%] lg:bottom-[25%] right-[8%]">
+                                                        <p className=" text-5xl lg:text-7xl text-neutral-50 font-bold flex items-center gap-2">
+                                                            {data?.track.userLiked == "true" ?
+                                                                <FaHeart size={25} className="mt-1"/> :
+                                                                <FaRegHeart size={25} className="mt-1"/>}
+
+                                                        </p>
                                                     </button>
 
 
@@ -157,6 +175,19 @@ export default function SongInfoCover({id}: { id: number }) {
                                                                  className="w-40 h-40 lg:w-60 lg:h-60 md:w-44 md:h-44 rounded-md self-center"/>
                                                             <p className="absolute bottom-[5%] right-[5%] text-5xl lg:text-7xl text-neutral-50 font-bold flex items-center gap-2">
                                                                 <FaCirclePlay size={38} className="mt-1"/></p>
+
+                                                            <button onClick={() => likeSong({
+                                                                variables: {
+                                                                    track_id: id,
+                                                                },
+                                                            })}
+                                                                    className="absolute bottom-[33%] md:bottom-[30%] lg:bottom-[25%] right-[8%]">
+                                                                <p className="absolute bottom-[5%] right-[5%] text-5xl lg:text-7xl text-neutral-50 font-bold flex items-center gap-2">
+                                                                    {data?.track.userLiked == "true" ?
+                                                                        <FaHeart size={25} className="mt-1"/> :
+                                                                        <FaRegHeart size={25} className="mt-1"/>}
+                                                                </p>
+                                                            </button>
                                                         </div>
 
 
@@ -175,7 +206,7 @@ export default function SongInfoCover({id}: { id: number }) {
                                                             <p className="text-xl lg:text-3xl font-semibold mb-1">{data?.track.artist.name}</p>
                                                         </Link>
 
-                                                        <LyricsDrawer/>
+                                                        <LyricsDrawer data={data}/>
                                                     </div>
                                                 </div>)}
                                     </div>

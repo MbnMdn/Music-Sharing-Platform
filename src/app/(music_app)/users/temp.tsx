@@ -19,7 +19,7 @@ import {Label} from "@/components/ui/label"
 // import {useMediaQuery} from "@react-hook/media-query";
 import {Textarea} from "@/components/ui/textarea"
 import {useMutation, useQuery} from "@apollo/client";
-import {DELETE_SONG, LIKE_SONG, UPLOAD_SONG} from "@/graphql/mutations";
+import {UPLOAD_SONG} from "@/graphql/mutations";
 import {GET_ALL_ARTISTS, GET_ALL_GENRES, GET_SONG} from "@/graphql/queries";
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import {FaPen} from "react-icons/fa6";
@@ -33,12 +33,12 @@ export function EditSongDrawer({trackId}: { trackId: number }) {
         }
     });
 
+    console.log(dataTrack?.track.artist.name);
 
     const [open, setOpen] = React.useState(false)
     const [uploadSong, {data, loading, error}] = useMutation(UPLOAD_SONG);
     const {data: dataArtists, loading: loadingArtists, error: errorArtists} = useQuery(GET_ALL_ARTISTS, {});
     const {data: dataGenres, loading: loadingGenres, error: errorGenres} = useQuery(GET_ALL_GENRES, {});
-    const [deleteSong, {data: dataDelete, loading: loadingDelete, error: errorDelete}] = useMutation(DELETE_SONG);
 
 
     const name = useRef<string>("");
@@ -83,9 +83,9 @@ export function EditSongDrawer({trackId}: { trackId: number }) {
                                 <Select onValueChange={(value) => {
                                     // @ts-ignore
                                     selectedArtistRef.current = value;
-                                }} defaultValue={dataTrack?.track.artist.id}>
+                                }}>
                                     <SelectTrigger>
-                                        <SelectValue placeholder="Select the artist"/>
+                                        <SelectValue defaultValue={dataTrack?.track.artist.id}/>
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
@@ -118,7 +118,7 @@ export function EditSongDrawer({trackId}: { trackId: number }) {
                                 <Select onValueChange={(value) => {
                                     // @ts-ignore
                                     selectedGenre.current = value;
-                                }} defaultValue={dataTrack?.track.genres[0]?.id}>
+                                }}>
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select the genre"/>
                                     </SelectTrigger>
@@ -161,30 +161,6 @@ export function EditSongDrawer({trackId}: { trackId: number }) {
                 </div>
                 {/*<UploadForm className="px-4"/>*/}
                 <div className="flex gap-10">
-
-
-                    <Button type="submit" variant="outline"
-                            onClick={() => deleteSong({
-                                variables: {
-                                    track_id: trackId,
-                                },
-                            })}
-                            className="block text-neutral-800 bg-red-900 hover:bg-red-800 mt-5"
-                        // onClick={() => uploadSong({
-                        //     variables: {
-                        //         id: -1,
-                        //         title: name.current,
-                        //         duration: duration.current,
-                        //         genre_id: selectedGenre.current,
-                        //         artist_id: selectedArtistRef.current,
-                        //         cover: cover.current.files[0],
-                        //         file: songFile.current.files[0],
-                        //         lyrics: lyrics.current,
-                        //     },
-                        // })}
-                    >Delete</Button>
-
-
                     <Button type="submit" variant="outline"
                             className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5"
                             onClick={() => uploadSong({
@@ -192,17 +168,14 @@ export function EditSongDrawer({trackId}: { trackId: number }) {
                                     id: trackId,
                                     title: name.current,
                                     duration: duration.current,
-                                    genre_id: selectedGenre.current ?? dataTrack?.track.genres[0]?.id,
-                                    artist_id: selectedArtistRef.current ?? dataTrack?.track.artist.id,
+                                    genre_id: selectedGenre.current,
+                                    artist_id: selectedArtistRef.current,
                                     cover: cover.current.files[0],
                                     file: songFile.current.files[0],
                                     lyrics: lyrics.current,
                                 },
-
                             })}
-                    >Upload</Button>
-
-
+                    >Update</Button>
                     <DrawerClose asChild>
                         <Button variant="outline"
                                 className="block bg-transparent hover:bg-neutral-700 hover:text-white my-5">Cancel</Button>

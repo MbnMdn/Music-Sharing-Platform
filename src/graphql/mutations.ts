@@ -26,12 +26,31 @@ export const CREATE_COMMENT = gql`
 `;
 
 export const UPLOAD_SONG = gql`
-    mutation UploadSong($title: String!, $duration: Int!, $file: Upload!, $cover: Upload!, $artist_id: ID!, $genre_id: ID!, $lyrics: String!) {
+    mutation UploadSong($id : ID!, $title: String!, $duration: Int!, $file: Upload, $cover: Upload, $artist_id: ID!, $genre_id: ID!, $lyrics: String) {
         uploadSong(
-            input: {title: $title, duration: $duration, file: $file, cover: $cover, artist_id: $artist_id, genre_id: $genre_id, lyrics: $lyrics}
+            input: {id:$id, title: $title, duration: $duration, file: $file, cover: $cover, artist_id: $artist_id, genre_id: $genre_id, lyrics: $lyrics}
         ) {
             message
             status
         }
     }
 `;
+
+
+export const LIKE_SONG = gql`
+    mutation LikeSong($track_id : ID!) {
+        likeSong(track_id: $track_id) {
+            message
+            status
+        }
+    }
+`
+
+
+export const DELETE_SONG = gql`
+    mutation DeleteSong ($track_id : ID!){
+        deleteTrack(id: $track_id){
+            id
+        }
+    }
+`
