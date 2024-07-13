@@ -8,6 +8,7 @@ import {GlassPlayerProvider} from "@/context/glass-player-provider";
 import SideNav from "@/app/ui/dashboard/sidenav";
 import Breadcrumbs from "@/app/ui/dashboard/breadcrumbs";
 import SearchBar from "@/app/ui/dashboard/search-bar";
+import favicon from "../ui/assets/favicon-32x32.png"
 
 
 const inter = Inter({subsets: ["latin"]});
@@ -29,38 +30,14 @@ export default function RootLayout({
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
-
-    // return (
-    //     // <html lang="en" data-theme="dark">
-    //     <html lang="en">
-    //     <body className={`bg-neutral-900 text-gray-100 ${montserrat.className}`}>
-    //
-    //     <Providers>
-    //         <GlassPlayerProvider>
-    //             <div className="flex h-screen flex-col md:flex-row md:overflow-hidden ">
-    //                 <div className="w-full flex-none md:w-60 mr-4 md:mt-5">
-    //                     <SideNav/>
-    //                 </div>
-    //                 <div className="overflow-y-auto ">
-    //                     <div className="sticky top-0  z-50 bg-neutral-900 ">
-    //                         <div className=" flex space-x-20 justify-between items-center pt-6  md:pt-11 ">
-    //                             <Breadcrumbs/>
-    //                             <SearchBar/>
-    //                         </div>
-    //                     </div>
-    //
-    //                     {children}
-    //                 </div>
-    //             </div>
-    //         </GlassPlayerProvider>
-    //     </Providers>
-    //     </body>
-    //     </html>
-    // );
-
     return (
+
         // <html lang="en" data-theme="dark">
         <html lang="en">
+        <head>
+            <link rel="icon" type="image/png" sizes="32x32" href={favicon.src}/>
+            <title>Music App</title>
+        </head>
         <body className={`bg-neutral-900 text-gray-100 ${montserrat.className}`}>
 
         <Providers>
@@ -69,7 +46,7 @@ export default function RootLayout({
                     <div className="w-full flex-none md:w-60 mr-4 md:mt-5">
                         <SideNav/>
                     </div>
-                    <div className="flex-grow md:px-6 overflow-y-auto md:px-11 ">
+                    <div className="flex-grow px-10 md:px-6 overflow-y-auto md:px-11 ">
                         <div className="sticky top-0  z-50 bg-transparent md:bg-neutral-900 ">
                             <div className="flex space-x-20 justify-between items-center  md:p-6  md:pt-11 ">
                                 <Breadcrumbs/>

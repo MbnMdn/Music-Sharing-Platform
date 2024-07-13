@@ -26,7 +26,7 @@ export default function Page({params}: { params: { id: number } }) {
                 :
                 <UserCoverImage artist={data?.user}/>
             }
-            {dataMe?.me.id === params.id ? <UploadDrawer/> : console.log("not equal")}
+            {dataMe?.me.id === params.id ? <UploadDrawer/> : null }
             {loading ? (
                     placeholderArray.map((_, index) => (
                         <div data-theme="halloween" key={index} className="p-4 my-2 bg-transparent">
@@ -47,7 +47,7 @@ export default function Page({params}: { params: { id: number } }) {
                 )
                 :
                 data?.user.tracks.map((song: any, index: number) => (
-                    <SongNarrow edit={0} song={song} key={song.name} index={index} song_id={song.id}/>
+                    <SongNarrow edit={0} song={song} key={song.id} index={index} song_id={song.id}/>
                 ))}
         </div>
     );

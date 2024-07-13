@@ -185,7 +185,7 @@ export default function GlassPlayer({shadow} : {shadow: boolean}) {
                             </div>
 
                             <div className="flex flex-col mt-3 gap-1">
-                                <input type="range" min="0" max="100" value={progress} defaultValue="0"
+                                <input type="range" min="0" max="100" value={progress}
                                        onChange={handleSeek}
                                        className="cursor-pointer"/>
 

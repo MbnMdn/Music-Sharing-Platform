@@ -33,9 +33,7 @@ export default function MostlyPlayed() {
                     ) :
 
                     (data?.getMostlyPlayedSongs.map((song: any, index: number) => (
-                        <Link key={song.id} href={{
-                            pathname: `/song/${song.id}`,
-                        }}>
+
                         <div
                                 className="grid max-[600px]:grid-cols-[8%_25%_50%_5%] max-[768px]:grid-cols-[5%_25%_50%_5%] md:grid-cols-[2%_25%_50%_5%]  lg:grid-cols-[8%_25%_50%_5%] gap-0 mb-2 justify-around "
                                 key={song.id}>
@@ -45,7 +43,13 @@ export default function MostlyPlayed() {
                                          className="w-16 h-16 object-cover rounded"/>
                                 </div>
                                 <div className="content-center">
+
+                                    <Link key={song.id} href={{
+                                        pathname: `/song/${song.id}`,
+                                    }}>
                                     <div className="text-lg font-semibold">{removeFeat(song.title)}</div>
+                                    </Link>
+
                                     <Link
                                         href={{
                                             pathname: `artists/${song?.artist.id}`,
@@ -55,9 +59,14 @@ export default function MostlyPlayed() {
                                         <div className="text-sm text-neutral-500">{song.artist.name}</div>
                                     </Link>
                                 </div>
+
+                            <Link key={song.id} href={{
+                                pathname: `/song/${song.id}`,
+                            }}>
                                 <div className="content-center"><IoIosArrowForward/></div>
-                            </div>
-                        </Link>
+                            </Link>
+
+                        </div>
                     )))}
         </div>
     );
