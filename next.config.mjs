@@ -16,7 +16,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'websong.liara.run',
+                hostname: 'websong-api.liara.run',
                 port: '',
                 pathname: '/**',
             },
