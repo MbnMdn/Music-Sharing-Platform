@@ -20,7 +20,7 @@ export default function AuthForm(props : Props) {
     const password = useRef("");
     const onLogin = async (e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await signIn("credentials", {username: username.current, password: password.current, redirect: true, callbackUrl: props.callbackUrl ?? "http://localhost:3000/"})
+        await signIn("credentials", {username: username.current, password: password.current, redirect: true, callbackUrl: props.callbackUrl ?? "/"})
     }
 
 
