@@ -4,6 +4,7 @@ import React, {createContext, useContext, useRef, useState} from "react";
 import {useQuery} from "@apollo/client";
 import {GET_SONG} from "@/graphql/queries";
 import {getClient, query} from "@/lib/apollo";
+// @ts-ignore
 const Context = createContext();
 
 
