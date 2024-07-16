@@ -4,6 +4,8 @@ import React from 'react';
 
 import Image from 'next/image'
 import {getMediaPath} from "@/app/utilities/getMediaPath";
+import avatar from "@/app/ui/assets/avatar.png"
+
 
 
 export default function CommentNarrow({comment} : {comment : any}) {
@@ -20,7 +22,7 @@ export default function CommentNarrow({comment} : {comment : any}) {
                     height={100}
                     width={100}
                     className="w-12 h-12 rounded-md "
-                    src={getMediaPath(comment?.user.avatar)}
+                    src={avatar.src}
                 />
                 <div className="flex-grow ml-6">
                     <div className="flex justify-between">

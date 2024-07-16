@@ -15,6 +15,7 @@ import {useSession} from "next-auth/react";
 import {useQuery} from "@apollo/client";
 import {GET_ME, GET_RECENTLY_PLAYED} from "@/graphql/queries";
 import {getMediaPath} from "@/app/utilities/getMediaPath";
+import avatar from "@/app/ui/assets/avatar.png"
 
 export function SheetSide() {
     const {data, loading, error} = useQuery(GET_ME, {
@@ -41,8 +42,8 @@ export function SheetSide() {
                             <div className=" flex w-full avatar  space-x-2">
                                 {/*<SheetSide/>*/}
                                 <div className="w-14 h-14 rounded-xl">
-                                    <img src={getMediaPath(data?.me.avatar)}
-                                         alt="alt"/>
+                                    <img src={avatar.src}
+                                         alt="user avatar"/>
                                 </div>
                                 <div className="flex flex-col content-center">
                                     <p className="text-md flex gap-2">
