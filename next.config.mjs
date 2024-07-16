@@ -10,7 +10,8 @@ const nextConfig = {
             },
             {
                 protocol: 'http',
-                hostname: '192.168.158.179',
+                // hostname: '192.168.158.179',
+                hostname: 'websong-api.liara.run',
                 port: '8000',
                 pathname: '/**',
             },
