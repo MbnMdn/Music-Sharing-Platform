@@ -20,12 +20,15 @@ import {Label} from "@/components/ui/label"
 import {Textarea} from "@/components/ui/textarea"
 import {IoIosAddCircleOutline} from "react-icons/io";
 import {useMutation, useQuery} from "@apollo/client";
-import {LIKE_SONG, UPLOAD_SONG} from "@/graphql/mutations";
+import {UPLOAD_SONG} from "@/graphql/mutations";
 import {GET_ALL_ARTISTS, GET_ALL_GENRES} from "@/graphql/queries";
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
-
+import {useToast} from "@/components/ui/use-toast"
 
 export function UploadDrawer() {
+    const {toast} = useToast()
+
+
     const [open, setOpen] = React.useState(false)
 
     const [uploadSong, {data, loading, error}] = useMutation(UPLOAD_SONG);
@@ -44,6 +47,27 @@ export function UploadDrawer() {
     const lyrics = useRef<string>("");
     const cover = useRef<any>(null);
     const songFile = useRef<any>(null);
+
+
+    const handleUpload = () => {
+        uploadSong({
+            variables: {
+                id: -1,
+                title: name.current,
+                duration: duration.current,
+                genre_id: selectedGenre.current,
+                artist_id: selectedArtistRef.current,
+                cover: cover.current.files[0],
+                file: songFile.current.files[0],
+                lyrics: lyrics.current,
+            },
+        });
+
+        toast({
+            title: "Comment sent successfully",
+            description: "It will be displayed after admin approval",
+        });
+    };
 
 
     // const isDesktop = useMediaQuery("(min-width: 768px)")
@@ -184,29 +208,17 @@ export function UploadDrawer() {
                     </form>
                 </div>
                 {/*<UploadForm className="px-4"/>*/}
-                <div className="flex gap-10">
-                    <Button type="submit" variant="outline"
-                            className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5"
-                            onClick={() => uploadSong({
-                                variables: {
-                                    id: -1,
-                                    title: name.current,
-                                    duration: duration.current,
-                                    genre_id: selectedGenre.current,
-                                    artist_id: selectedArtistRef.current,
-                                    cover: cover.current.files[0],
-                                    file: songFile.current.files[0],
-                                    lyrics: lyrics.current,
-                                },
-                            })}
-                    >Upload</Button>
+                <DrawerClose asChild>
+                    <div className="flex gap-10">
+                        <Button type="submit" variant="outline"
+                                className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5"
+                                onClick={handleUpload}
+                        >Upload</Button>
 
-                    <DrawerClose asChild>
                         <Button variant="outline"
                                 className="block bg-transparent hover:bg-neutral-700 hover:text-white my-5">Cancel</Button>
-                    </DrawerClose>
-                </div>
-
+                    </div>
+                </DrawerClose>
             </DrawerContent>
         </Drawer>
     )

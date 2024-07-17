@@ -19,7 +19,7 @@ import {Label} from "@/components/ui/label"
 // import {useMediaQuery} from "@react-hook/media-query";
 import {Textarea} from "@/components/ui/textarea"
 import {useMutation, useQuery} from "@apollo/client";
-import {DELETE_SONG, LIKE_SONG, UPLOAD_SONG} from "@/graphql/mutations";
+import {DELETE_SONG, UPLOAD_SONG} from "@/graphql/mutations";
 import {GET_ALL_ARTISTS, GET_ALL_GENRES, GET_SONG} from "@/graphql/queries";
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import {FaPen} from "react-icons/fa6";
@@ -160,55 +160,55 @@ export function EditSongDrawer({trackId}: { trackId: number }) {
                     </form>
                 </div>
                 {/*<UploadForm className="px-4"/>*/}
-                <div className="flex gap-10">
+
+                <DrawerClose asChild>
+
+                    <div className="flex gap-10">
 
 
-                    <Button type="submit" variant="outline"
-                            onClick={() => deleteSong({
-                                variables: {
-                                    track_id: trackId,
-                                },
-                            })}
-                            className="block text-neutral-800 bg-red-900 hover:bg-red-800 mt-5"
-                        // onClick={() => uploadSong({
-                        //     variables: {
-                        //         id: -1,
-                        //         title: name.current,
-                        //         duration: duration.current,
-                        //         genre_id: selectedGenre.current,
-                        //         artist_id: selectedArtistRef.current,
-                        //         cover: cover.current.files[0],
-                        //         file: songFile.current.files[0],
-                        //         lyrics: lyrics.current,
-                        //     },
-                        // })}
-                    >Delete</Button>
+                        <Button type="submit" variant="outline"
+                                onClick={() => deleteSong({
+                                    variables: {
+                                        track_id: trackId,
+                                    },
+                                })}
+                                className="block text-neutral-800 bg-red-900 hover:bg-red-800 mt-5"
+                            // onClick={() => uploadSong({
+                            //     variables: {
+                            //         id: -1,
+                            //         title: name.current,
+                            //         duration: duration.current,
+                            //         genre_id: selectedGenre.current,
+                            //         artist_id: selectedArtistRef.current,
+                            //         cover: cover.current.files[0],
+                            //         file: songFile.current.files[0],
+                            //         lyrics: lyrics.current,
+                            //     },
+                            // })}
+                        >Delete</Button>
 
 
-                    <Button type="submit" variant="outline"
-                            className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5"
-                            onClick={() => uploadSong({
-                                variables: {
-                                    id: trackId,
-                                    title: name.current,
-                                    duration: duration.current,
-                                    genre_id: selectedGenre.current ?? dataTrack?.track.genres[0]?.id,
-                                    artist_id: selectedArtistRef.current ?? dataTrack?.track.artist.id,
-                                    cover: cover.current.files[0],
-                                    file: songFile.current.files[0],
-                                    lyrics: lyrics.current,
-                                },
+                        <Button type="submit" variant="outline"
+                                className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5"
+                                onClick={() => uploadSong({
+                                    variables: {
+                                        id: trackId,
+                                        title: name.current,
+                                        duration: duration.current,
+                                        genre_id: selectedGenre.current ?? dataTrack?.track.genres[0]?.id,
+                                        artist_id: selectedArtistRef.current ?? dataTrack?.track.artist.id,
+                                        cover: cover.current.files[0],
+                                        file: songFile.current.files[0],
+                                        lyrics: lyrics.current,
+                                    },
 
-                            })}
-                    >Upload</Button>
+                                })}
+                        >Upload</Button>
 
-
-                    <DrawerClose asChild>
                         <Button variant="outline"
                                 className="block bg-transparent hover:bg-neutral-700 hover:text-white my-5">Cancel</Button>
-                    </DrawerClose>
-                </div>
-
+                    </div>
+                </DrawerClose>
             </DrawerContent>
         </Drawer>
     )

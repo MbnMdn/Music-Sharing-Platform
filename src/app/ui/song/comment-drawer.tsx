@@ -58,23 +58,26 @@ export function CommentDrawer({trackId}: { trackId: number }) {
                 </form>
 
                 {/*<CommentSection className="px-4" track_id={trackId}/>*/}
-                <div className="flex gap-10">
-                    <Button type="submit" variant="outline"
-                            className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5"
-                            onClick={async () => {
-                                await createComment({
-                                    variables: {
-                                        body: comment.current,
-                                        track_id: trackId
-                                    }
-                                })
-                            }}
-                    >Comment</Button>
-                    <DrawerClose asChild>
+
+                <DrawerClose asChild>
+                    <div className="flex gap-10">
+                        <Button type="submit" variant="outline"
+                                className="block text-neutral-800 bg-neutral-300 hover:bg-neutral-50 mt-5"
+                                onClick={async () => {
+                                    await createComment({
+                                        variables: {
+                                            body: comment.current,
+                                            track_id: trackId
+                                        }
+                                    })
+                                }}
+                        >Comment</Button>
+
                         <Button variant="outline"
                                 className="block bg-transparent hover:bg-neutral-700 hover:text-white my-5">Cancel</Button>
-                    </DrawerClose>
-                </div>
+                    </div>
+
+                </DrawerClose>
             </DrawerContent>
         </Drawer>
     )
