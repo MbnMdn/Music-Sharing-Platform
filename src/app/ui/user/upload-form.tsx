@@ -28,8 +28,6 @@ import {useToast} from "@/components/ui/use-toast"
 export function UploadDrawer() {
     const {toast} = useToast()
 
-
-
     const [open, setOpen] = React.useState(false)
 
     const [uploadSong, {data, loading, error}] = useMutation(UPLOAD_SONG);
@@ -51,6 +49,11 @@ export function UploadDrawer() {
 
 
     const handleUpload = () => {
+        toast({
+            title: "Uploaded successfully",
+            description: "It will be displayed after admin approval",
+        });
+
         uploadSong({
             variables: {
                 id: -1,
@@ -62,12 +65,7 @@ export function UploadDrawer() {
                 file: songFile.current.files[0],
                 lyrics: lyrics.current,
             },
-        });
-
-        toast({
-            title: "Comment sent successfully",
-            description: "It will be displayed after admin approval",
-        });
+        })
     };
 
 
