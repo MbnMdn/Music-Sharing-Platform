@@ -35,7 +35,7 @@ function makeClient(session : string | undefined) {
 
     const httpLink = createUploadLink({
         // uri: 'http://192.168.158.179:8000/graphql',
-        uri: 'https://websong-api.liara.run/graphql'
+        uri: 'https://songapi.anilist.top/graphql'
     });
 
     // use the `ApolloClient` from "@apollo/experimental-nextjs-app-support"

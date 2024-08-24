@@ -4,7 +4,7 @@ export const getMediaPath = (path: string) => {
             return path;
         }else {
             // return 'http://192.168.158.179:8000/storage/' + path;
-            return 'https://websong-api.liara.run/storage/' + path;
+            return 'https://songapi.anilist.top/storage/' + path;
         }
     }
     return path

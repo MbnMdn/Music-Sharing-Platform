@@ -11,13 +11,13 @@ const nextConfig = {
             {
                 protocol: 'http',
                 // hostname: '192.168.158.179',
-                hostname: 'websong-api.liara.run',
+                hostname: 'songapi.anilist.top',
                 port: '8000',
                 pathname: '/**',
             },
             {
                 protocol: 'https',
-                hostname: 'websong-api.liara.run',
+                hostname: 'songapi.anilist.top',
                 port: '',
                 pathname: '/**',
             },
