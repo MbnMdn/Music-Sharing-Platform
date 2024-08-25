@@ -50,6 +50,7 @@ export const options: NextAuthOptions = {
                     cookies().set("access_token",data?.login.access_token);
                     return data?.login;
                 }catch (error){
+                    console.log(error)
                     throw new Error((error as ApolloError).graphQLErrors[0].extensions.reason as string)
                 }
 
