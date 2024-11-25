@@ -11,13 +11,13 @@ const nextConfig = {
             {
                 protocol: 'http',
                 // hostname: '192.168.158.179',
-                hostname: 'songapi.anilist.top',
+                hostname: 'songapi.alplayer.ir',
                 port: '8000',
                 pathname: '/**',
             },
             {
                 protocol: 'https',
-                hostname: 'songapi.anilist.top',
+                hostname: 'songapi.alplayer.ir',
                 port: '',
                 pathname: '/**',
             },
