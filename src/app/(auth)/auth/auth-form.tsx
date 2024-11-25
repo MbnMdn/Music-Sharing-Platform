@@ -59,12 +59,12 @@ export default function AuthForm(props : Props) {
 
                             <div className="space-y-1">
                                 <Label htmlFor="name">Username</Label>
-                                <Input id="username" placeholder="Enter your username" name={"username"} onChange={(e) => username.current = e.target.value}/>
+                                <Input id="username" placeholder="Enter your username" name={"username"} value={'Admin'} onChange={(e) => username.current = e.target.value}/>
                             </div>
                             <div className="space-y-1">
                                 <Label htmlFor="username">Password</Label>
                                 <Input id="password" placeholder="•••••••••" type="password"
-                                       className="text-neutral-500" name={"password"}  onChange={(e) => password.current = e.target.value}/>
+                                       className="text-neutral-500" name={"password"} value={'Admin'}  onChange={(e) => password.current = e.target.value}/>
                             </div>
                         </CardContent>
                         <CardFooter className="justify-around flex-col gap-4">
